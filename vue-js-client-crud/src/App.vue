@@ -1,22 +1,23 @@
 <template>
   <div id="app">
     <Navigation></Navigation>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MealTableComponent></MealTableComponent>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 import Navigation from "@/layouts/Navigation";
 import Footer from "@/layouts/Footer";
+import MealTableComponent from "@/components/MealTableComponent";
 
 export default {
   name: 'App',
   components: {
+    MealTableComponent,
     Footer,
-    Navigation,
-    HelloWorld
+    Navigation
   }
 }
 </script>
