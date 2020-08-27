@@ -13,6 +13,7 @@
         <tr v-for="mealTable in mealTables" v-bind:key="mealTable.id">
           <td>{{ mealTable.id }}</td>
           <td>{{ mealTable.calendarWeek }}</td>
+          <td>{{ mealTable.mealTableWeek }}</td>
         </tr>
         </tbody>
       </table>
@@ -29,7 +30,8 @@ export default {
     return {
       mealTables: {
         id: " ",
-        calendarWeek: " "
+        calendarWeek: " ",
+        mealTableWeek:" "
       }
     };
   },

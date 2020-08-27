@@ -7,13 +7,13 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/MeatTable',
-        name: 'MeatTable',
+        path: '/meatTable',
+        name: 'MealTableComponent',
         component: MealTableComponent,
     },
     {
-        path: '/Weekly',
-        name: 'Weekly',
+        path: '/weekly/:id',
+        name: 'MealTableWeekComponent',
         component: MealTableWeekComponent,
     }
 ]
