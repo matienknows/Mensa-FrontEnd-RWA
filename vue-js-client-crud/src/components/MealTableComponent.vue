@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <h3>All Courses</h3>
+    <h3>Meal Table</h3>
     <div class="container">
       <table class="table">
         <thead>
         <tr>
-          <th>Id</th>
-          <th>CalendarWeek</th>
+          <th>Meal Table Number</th>
+          <th>Calendar Week</th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +17,6 @@
         </tbody>
       </table>
     </div>
-
   </div>
 </template>
 

@@ -1,14 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HelloWorld from "@/components/HelloWorld";
+import MealTableComponent from "@/components/MealTableComponent";
+import MealTableWeekComponent from "@/components/MealTableWeekComponent";
 
 Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/',
-        name: 'HelloWorld',
-        component: HelloWorld
+        path: '/MeatTable',
+        name: 'MeatTable',
+        component: MealTableComponent,
+    },
+    {
+        path: '/Weekly',
+        name: 'Weekly',
+        component: MealTableWeekComponent,
     }
 ]
 
