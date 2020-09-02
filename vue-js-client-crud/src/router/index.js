@@ -1,20 +1,26 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import MealTableComponent from "@/components/MealTableComponent";
+import MealComponent from "@/components/MealComponent";
 import MealTableWeekComponent from "@/components/MealTableWeekComponent";
+import MealTableWeekAddComponent from "@/components/MealTableWeekAddComponent";
 
 Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/meatTable',
-        name: 'MealTableComponent',
-        component: MealTableComponent,
+        path: '/meal',
+        name: 'MealComponent',
+        component: MealComponent,
     },
     {
         path: '/weekly/:id',
         name: 'MealTableWeekComponent',
         component: MealTableWeekComponent,
+    },
+    {
+        path: '/week/add',
+        name: 'MealTableWeekAdd',
+        component: MealTableWeekAddComponent,
     }
 ]
 

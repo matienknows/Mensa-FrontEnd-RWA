@@ -6,7 +6,7 @@ class MealTableDataService {
         }
 
         retrieveMealTableById(id){
-            return http.get(`/weekly/${id}`);
+            return http.get(`/mealtable/weekly/${id}`);
         }
 }
 export default new MealTableDataService();
