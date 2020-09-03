@@ -3,12 +3,21 @@ import VueRouter from 'vue-router';
 import MealComponent from "@/components/MealComponent";
 import MealTableWeekComponent from "@/components/MealTableWeekComponent";
 import MealTableWeekAddComponent from "@/components/MealTableWeekAddComponent";
+import MealUpdateComponent from "@/components/MealUpdateComponent";
+
 
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/meal',
+        component: MealComponent,
+    },
+    {   path: '/meal/update',
+        component: MealUpdateComponent,
+    },
+    {
+        path: '/meal/:id',
         name: 'MealComponent',
         component: MealComponent,
     },

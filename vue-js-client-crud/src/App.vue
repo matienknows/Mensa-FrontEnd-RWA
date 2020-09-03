@@ -7,11 +7,8 @@
 </template>
 
 <script>
-
 import Navigation from "@/layouts/Navigation";
 import Footer from "@/layouts/Footer";
-
-
 
 export default {
   name: 'App',

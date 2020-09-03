@@ -38,19 +38,6 @@
 <script>
 import MealTableDataService from "@/service/MealTableDataService";
 
-/*$(document).ready(function () {
-  // On refresh check if there are values selected
-  if (localStorage.selectVal) {
-    // Select the value stored
-    $('select').val(localStorage.selectVal);
-  }
-});
-
-// On change store the value
-$('select').on('change', function(){
-  var currentVal = $(this).val();
-  localStorage.setItem('selectVal', currentVal );
-});*/
 
 export default {
   name: "MealTableWeekComponent",

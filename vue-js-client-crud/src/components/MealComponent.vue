@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h3>Meal Table</h3>
+    <router-view></router-view>
     <div class="container">
       <table class="table table-hover">
         <thead>
@@ -20,8 +21,8 @@
         </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-outline-primary" onclick="window.location.href= '#'">Update</button>
-      <button type="button" class="btn btn-outline-danger deleteButton">Delete</button>
+      <router-link to="/meal/update"><button type="button" class="btn btn-outline-primary">Update</button></router-link>
+      <button type="button" class="btn btn-outline-danger" v-on:click="deleteById">Delete</button>
     </div>
   </div>
 </template>
@@ -59,8 +60,18 @@ export default {
             this.meals = response.data;
           });
     },
-    deleteMeal() {
-
+    deleteById:
+        function () {
+          var currentUrl = window.location.pathname;
+          var id = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+          console.log(id);
+          MealDataService.delete(id)
+              .then(response => {
+                    console.log(response)
+                    this.refreshMeal()
+                  })
+        },
+    selectToUpdate: function () {
     }
   },
   created() {
