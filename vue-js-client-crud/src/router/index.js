@@ -13,7 +13,8 @@ const routes = [
         path: '/meal',
         component: MealComponent,
     },
-    {   path: '/meal/update',
+    {   path: '/meal/:id/update',
+        name:'MealUpdateComponent',
         component: MealUpdateComponent,
     },
     {

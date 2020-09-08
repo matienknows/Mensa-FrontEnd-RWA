@@ -7,5 +7,11 @@ class MealDataService {
     delete(id) {
         return http.delete(`/meal/${id}`);
     }
+    getMealById(id) {
+        return http.get(`/meal/${id}`);
+    }
+    updateMealById(data) {
+        return http.put('/meal', data);
+    }
 }
 export default new MealDataService();

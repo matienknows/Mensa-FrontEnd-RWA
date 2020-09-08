@@ -21,7 +21,7 @@
         </tr>
         </tbody>
       </table>
-      <router-link to="/meal/update"><button type="button" class="btn btn-outline-primary">Update</button></router-link>
+      <button type="button" class="btn btn-outline-primary" v-on:click="selectToUpdate">Update</button>
       <button type="button" class="btn btn-outline-danger" v-on:click="deleteById">Delete</button>
     </div>
   </div>
@@ -30,6 +30,7 @@
 <script>
 import MealDataService from "@/service/MealDataService";
 import $ from 'jquery'
+import router from "@/router";
 //set a select on table row and add the id to url
 $(function () {
   $('.table').on('click', 'tr', function () {
@@ -43,7 +44,6 @@ $(function () {
     }
   })
 });
-
 
 export default {
   name: "MealComponent",
@@ -72,6 +72,9 @@ export default {
                   })
         },
     selectToUpdate: function () {
+      var currentUrl = window.location.pathname;
+      var id = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+      router.push({ name: 'MealUpdateComponent', params: { id } })
     }
   },
   created() {
