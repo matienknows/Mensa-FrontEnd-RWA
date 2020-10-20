@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h3>Meal Table</h3>
-    <router-view></router-view>
     <div class="container">
       <table class="table table-hover">
         <thead>

@@ -12,13 +12,13 @@
           <input type="text" class="form-control">
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group col-2">
           <input type="text" value="Monday" class="form-control" onkeydown="return false">
         </div>
         <div class="form-group col-2">
-          <label>Food</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="Food Label">
         </div>
       </div>
       <div class="form-row">
@@ -26,17 +26,15 @@
           <input type="text" value="Tuesday" class="form-control" onkeydown="return false">
         </div>
         <div class="form-group col-2">
-          <label>Food</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="Food Label">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-2">
-          <input type="text" value="Wednesday" class="form-control" onkeydown="return false">
+          <input type="text" value="Wednesday" class="form-control" placeholder="Food Label" onkeydown="return false">
         </div>
         <div class="form-group col-2">
-          <label>Food</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="Food Label">
         </div>
       </div>
       <div class="form-row">
@@ -44,8 +42,7 @@
           <input type="text" value="Thursday" class="form-control" onkeydown="return false">
         </div>
         <div class="form-group col-2">
-          <label>Food</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="Food Label">
         </div>
       </div>
       <div class="form-row">
@@ -53,8 +50,7 @@
           <input type="text" value="Friday" class="form-control" onkeydown="return false">
         </div>
         <div class="form-group col-2">
-          <label>Food</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="Food Label">
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
