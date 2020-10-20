@@ -31,6 +31,7 @@
 import MealDataService from "@/service/MealDataService";
 import $ from 'jquery'
 import router from "@/router";
+
 //set a select on table row and add the id to url
 $(function () {
   $('.table').on('click', 'tr', function () {
@@ -78,6 +79,7 @@ export default {
     }
   },
   created() {
+
     this.refreshMeal();
   }
 }
