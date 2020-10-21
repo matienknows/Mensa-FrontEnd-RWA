@@ -28,7 +28,7 @@ const routes = [
         component: MealTableWeekComponent,
     },
     {
-        path: '/week/add',
+        path: '/mealtable/add',
         name: 'MealTableWeekAdd',
         component: MealTableWeekAddComponent,
     }

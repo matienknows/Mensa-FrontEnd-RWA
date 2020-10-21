@@ -2,19 +2,20 @@
   <div class="container">
     <h3>Meal Table</h3>
     <div class="container">
-      <button type="button" class="btn btn-outline-primary"  onclick="window.location.href= '/week/add' ">Primary</button>
-      <button href="/weekly/add">Add Meal Table</button>
+      <router-link type="button" class="btn btn-outline-primary" to="/mealtable/add" tag="button">Add Meal Table</router-link>
       <table class="table">
         <thead>
         <div class="form-group">
           <label for="weeks">Select Week</label>
           <select class="form-control" id="weeks" onchange="document.location.href = this.value">
+            <option disabled="disabled" selected>Please choose a week!</option>
             <option>1</option>
-            <option select="2">2</option>
+            <option>2</option>
             <option>3</option>
             <option>4</option>
           </select>
         </div>
+        <h4>Calendar Week: {{ $route.params.id }}</h4>
         <tr>
           <th scope="col">Day</th>
           <th>Meal</th>
