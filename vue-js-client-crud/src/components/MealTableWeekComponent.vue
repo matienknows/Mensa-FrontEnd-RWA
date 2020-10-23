@@ -57,7 +57,6 @@ export default {
       }
     };
   },
-
   methods: {
     refreshMealTable() {
       const id = this.$route.params.id;
@@ -70,7 +69,6 @@ export default {
   },
   created() {
     this.refreshMealTable();
-
   }
 };
 </script>
