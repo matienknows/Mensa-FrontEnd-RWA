@@ -10,6 +10,7 @@ class MealTableDataService {
     }
 
     addMealTableWeek(data) {
+        console.log("add");
         return http.post('/mealtable', data);
     }
 }
