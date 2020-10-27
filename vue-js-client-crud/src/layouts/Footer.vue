@@ -2,12 +2,9 @@
   <footer class="page-footer fixed-bottom">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
-          <h5 class="text-uppercase">Footer Content</h5>
-          <p>Here you can use rows and columns to organize your footer content.</p>
-        </div>
-        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-          <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+        <div class="col-md-6 footer-text">
+          <h5 class="text-uppercase">Food</h5>
+          <p>We are serving you good food</p>
         </div>
       </div>
     </div>
@@ -22,4 +19,12 @@ export default {
 
 <style scoped lang="scss">
 
+.page-footer{
+  background-color: #DB037B;
+
+  .footer-text {
+    padding: 50px 50px;
+    color: white;
+  }
+}
 </style>

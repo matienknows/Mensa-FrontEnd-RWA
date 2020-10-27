@@ -79,7 +79,7 @@
       </div>
     </form>
     <div class="button row justify-content-center">
-    <button class="btn btn-primary col-6" v-on:click="addMealTableWeek">Submit</button>
+    <button class="btn btn-outline-danger col-6" v-on:click="addMealTableWeek">Submit</button>
     </div>
   </div>
 </template>
