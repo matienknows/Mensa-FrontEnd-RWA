@@ -18,8 +18,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.page-footer{
+.page-footer {
+  width: 100%;
   background-color: #DB037B;
 
   .footer-text {

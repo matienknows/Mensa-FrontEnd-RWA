@@ -1,86 +1,94 @@
 <template>
   <div class="container">
-    <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
-    <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
-    <form class="meal-table">
-      <div class="form-row text-center">
-        <div class="form-group col-12">
-          <label>Calendar Week</label>
-          <select class="form-control col-12" v-model="selectedCalendarWeek">
-            <option value="" disabled selected>Select the Week</option>
-            <option v-for="n  in 52" v-bind:key="n">{{ n }}</option>
-          </select>
+    <section class="meal-table-add">
+      <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
+      <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
+      <form class="meal-table" @submit="checkForm">
+        <div class="form-row text-center">
+          <div class="form-group col-12">
+            <label>Calendar Week</label>
+            <select class="form-control col-12" v-model="selectedCalendarWeek">
+              <option value="" disabled selected>Select the Week</option>
+              <option v-for="n  in 52" v-bind:key="n">{{ n }}</option>
+            </select>
+            <small id="calendarErrorMsg" class="form-text text-muted">Please choose a week.</small>
+          </div>
         </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <input type="text" value="Monday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-6">
+            <select class="form-control" v-model="selectedFoodMonday" id="selectedFoodMonday">
+              <option value="" disabled selected>Select the Food</option>
+              <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
+                {{ meal.price }}
+              </option>
+            </select>
+            <small id="mondayErrorMsg" class="form-text text-muted">Please choose a Food.</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <input type="text" value="Tuesday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-6">
+            <select class="form-control" v-model="selectedFoodTuesday" id="selectedFoodTuesday">
+              <option value="" disabled selected>Select the Food</option>
+              <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
+                {{ meal.price }}
+              </option>
+            </select>
+            <small id="tuesdayErrorMsg" class="form-text text-muted">Please choose a Food.</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <input type="text" value="Wednesday" class="form-control" placeholder="Food Label" onkeydown="return false">
+          </div>
+          <div class="form-group col-6">
+            <select class="form-control" v-model="selectedFoodWednesday" id="selectedFoodWednesday">
+              <option value="" disabled selected>Select the Food</option>
+              <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
+                {{ meal.price }}
+              </option>
+            </select>
+            <small id="wednesdayErrorMsg" class="form-text text-muted">Please choose a Food.</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <input type="text" value="Thursday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-6">
+            <select class="form-control" v-model="selectedFoodThursday" id="selectedFoodThursday">
+              <option value="" disabled selected>Select the Food</option>
+              <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
+                {{ meal.price }}
+              </option>
+            </select>
+            <small id="thursdayErrorMsg" class="form-text text-muted">Please choose a Food.</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <input type="text" value="Friday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-6">
+            <select class="form-control" v-model="selectedFoodFriday" id="selectedFoodFriday">
+              <option value="" disabled selected>Select the Food</option>
+              <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
+                {{ meal.price }}
+              </option>
+            </select>
+            <small id="fridayErrorMsg" class="form-text text-muted">Please choose a Food.</small>
+          </div>
+        </div>
+      </form>
+      <div class="button row justify-content-center">
+        <button class="btn btn-outline-danger col-6" v-on:click="addMealTableWeek">Submit</button>
       </div>
-      <div class="form-row text-center">
-        <div class="form-group col-6">
-          <input type="text" value="Monday" class="form-control" onkeydown="return false">
-        </div>
-        <div class="form-group col-6">
-          <select class="form-control" v-model="selectedFoodMonday" id="selectedFoodMonday">
-            <option value="" disabled selected>Select the Food</option>
-            <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
-              {{ meal.price }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-6">
-          <input type="text" value="Tuesday" class="form-control" onkeydown="return false">
-        </div>
-        <div class="form-group col-6">
-          <select class="form-control" v-model="selectedFoodTuesday" id="selectedFoodTuesday">
-            <option value="" disabled selected>Select the Food</option>
-            <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
-              {{ meal.price }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-6">
-          <input type="text" value="Wednesday" class="form-control" placeholder="Food Label" onkeydown="return false">
-        </div>
-        <div class="form-group col-6">
-          <select class="form-control" v-model="selectedFoodWednesday" id="selectedFoodWednesday">
-            <option value="" disabled selected>Select the Food</option>
-            <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
-              {{ meal.price }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-6">
-          <input type="text" value="Thursday" class="form-control" onkeydown="return false">
-        </div>
-        <div class="form-group col-6">
-          <select class="form-control" v-model="selectedFoodThursday" id="selectedFoodThursday">
-            <option value="" disabled selected>Select the Food</option>
-            <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
-              {{ meal.price }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-6">
-          <input type="text" value="Friday" class="form-control" onkeydown="return false">
-        </div>
-        <div class="form-group col-6">
-          <select class="form-control" v-model="selectedFoodFriday" id="selectedFoodFriday">
-            <option value="" disabled selected>Select the Food</option>
-            <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
-              {{ meal.price }}
-            </option>
-          </select>
-        </div>
-      </div>
-    </form>
-    <div class="button row justify-content-center">
-    <button class="btn btn-outline-danger col-6" v-on:click="addMealTableWeek">Submit</button>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -101,9 +109,10 @@ export default {
       selectedFoodThursday: '',
       selectedFoodFriday: '',
 
-      alertFailed: 'Please pick one Food once a week.',
+      alertFailed: 'Duplicate Selection: Please pick one Food once a week.',
       alertSucces: 'Your changes were succesfully submitted.',
 
+      errorMessage: false
     };
   },
   methods: {
@@ -112,6 +121,44 @@ export default {
           .then(response => {
             this.meals = response.data;
           });
+    },
+    checkForm: function () {
+      if (!this.selectedCalendarWeek) {
+        document.getElementById("calendarErrorMsg").style.display = "block"
+        this.errorMessage= true;
+      } else {
+        document.getElementById("calendarErrorMsg").style.display = "none"
+      }
+      if (!this.selectedFoodMonday) {
+        document.getElementById("mondayErrorMsg").style.display = "block"
+        this.errorMessage= true;
+      } else {
+        document.getElementById("mondayErrorMsg").style.display = "none"
+      }
+      if (!this.selectedFoodTuesday) {
+        document.getElementById("tuesdayErrorMsg").style.display = "block"
+        this.errorMessage= true;
+      } else {
+        document.getElementById("tuesdayErrorMsg").style.display = "none"
+      }
+      if (!this.selectedFoodWednesday) {
+        document.getElementById("wednesdayErrorMsg").style.display = "block"
+        this.errorMessage= true;
+      } else {
+        document.getElementById("wednesdayErrorMsg").style.display = "none"
+      }
+      if (!this.selectedFoodThursday) {
+        document.getElementById("thursdayErrorMsg").style.display = "block"
+        this.errorMessage= true;
+      } else {
+        document.getElementById("thursdayErrorMsg").style.display = "none"
+      }
+      if (!this.selectedFoodFriday) {
+        document.getElementById("fridayErrorMsg").style.display = "block"
+        this.errorMessage = true;
+      } else {
+        document.getElementById("fridayErrorMsg").style.display = "none"
+      }
     },
     addMealTableWeek: function () {
       this.selectedFoodMonday = document.getElementById("selectedFoodMonday").value
@@ -126,6 +173,12 @@ export default {
       var foodDetailsOnThursday = this.selectedFoodThursday.split(',');
       var foodDetailsOnFriday = this.selectedFoodFriday.split(',');
 
+      this.checkForm()
+
+      if(this.errorMessage) {
+        this.errorMessage = false
+        return;
+      }
       var data = {
         id: this.selectedCalendarWeek,
         calendarWeek: this.selectedCalendarWeek,
@@ -173,8 +226,6 @@ export default {
             console.log(error)
             document.getElementById("alert-succes").style.display = "none"
             document.getElementById("alert-failed").style.display = "block"
-
-            console.log("error")
           })
     }
   },
@@ -185,6 +236,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.meal-table-add {
+  height:auto;
+}
 .button {
   margin: 30px 0px 30px 0px;
 }
@@ -192,6 +246,7 @@ export default {
 .meal-table {
   margin: 30px 0px 30px 0px;
 }
+
 #alert-failed {
   margin: 30px 0px 30px 0px;
   display: none;
@@ -200,5 +255,35 @@ export default {
 #alert-succes {
   margin: 30px 0px 30px 0px;
   display: none;
+}
+
+#calendarErrorMsg {
+  display: none;
+  color: red !important;
+}
+
+#mondayErrorMsg {
+  display: none;
+  color: red !important;
+}
+
+#tuesdayErrorMsg {
+  display: none;
+  color: red !important;
+}
+
+#wednesdayErrorMsg {
+  display: none;
+  color: red !important;
+}
+
+#thursdayErrorMsg {
+  display: none;
+  color: red !important;
+}
+
+#fridayErrorMsg {
+  display: none;
+  color: red !important;
 }
 </style>
