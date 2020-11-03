@@ -7,6 +7,9 @@
         <div class="form-row text-center">
           <div class="form-group col-12">
             <label>Calendar Week</label>
+            <div class="form-group col-12">
+              <input type="text" :value="this.$store.getters.amount" class="form-control" onkeydown="return false">
+            </div>
             <!--<select class="form-control col-12" v-model="selectedCalendarWeek">
               <option value="" disabled selected>Select the Week</option>
               <option v-for="n  in 52" v-bind:key="n">{{ n }}</option>
@@ -238,6 +241,7 @@ export default {
   },
   created() {
     this.refreshMeal();
+    console.log(this.$store.getters.amount);
   }
 }
 </script>

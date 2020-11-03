@@ -71,7 +71,9 @@ export default {
           .then(response => {
             this.weekMealTables = response.data;
             this.amountWeekMealTables=(this.weekMealTables.length)+1;
-            console.log(this.amountWeekMealTables)
+            this.$store.commit("setAmountWeekMealTables", {
+              newAmount: this.amountWeekMealTables,
+            });
           });
     },
   },
