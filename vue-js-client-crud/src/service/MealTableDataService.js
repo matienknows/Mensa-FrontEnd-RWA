@@ -2,7 +2,7 @@ import http from '../http-common'
 
 class MealTableDataService {
     retrieveAllMeatTables() {
-        return http.get();
+        return http.get('/mealtable');
     }
 
     retrieveMealTableById(id) {

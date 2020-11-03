@@ -7,10 +7,10 @@
         <div class="form-row text-center">
           <div class="form-group col-12">
             <label>Calendar Week</label>
-            <select class="form-control col-12" v-model="selectedCalendarWeek">
+            <!--<select class="form-control col-12" v-model="selectedCalendarWeek">
               <option value="" disabled selected>Select the Week</option>
               <option v-for="n  in 52" v-bind:key="n">{{ n }}</option>
-            </select>
+            </select>-->
             <small id="calendarErrorMsg" class="form-text text-muted">Please choose a week.</small>
           </div>
         </div>
@@ -88,6 +88,9 @@
       <div class="button row justify-content-center">
         <button class="btn btn-outline-danger col-6" v-on:click="addMealTableWeek">Submit</button>
       </div>
+      <div class="button row justify-content-center">
+        <button class="btn btn-outline-info col-6" v-on:click="goBack">Go Back</button>
+      </div>
     </section>
   </div>
 </template>
@@ -95,6 +98,7 @@
 <script>
 import MealDataService from "@/service/MealDataService";
 import MealTableDataService from "@/service/MealTableDataService";
+import router from '@/router';
 
 export default {
   name: "MealTableWeekAddComponent",
@@ -121,6 +125,9 @@ export default {
           .then(response => {
             this.meals = response.data;
           });
+    },
+    goBack() {
+      router.back()
     },
     checkForm: function () {
       if (!this.selectedCalendarWeek) {

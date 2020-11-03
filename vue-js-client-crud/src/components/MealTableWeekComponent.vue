@@ -1,21 +1,18 @@
 <template>
   <div class="container">
     <h3>Meal Table</h3>
-    <div class="container">
-      <router-link type="button" class="btn btn-outline-primary" to="/mealtable/add" tag="button">Add Meal Table</router-link>
+    <div class="form-group">
+      <select class="form-control" id="optionMenu" v-model="selectedMealTable" @change="refreshMealTable(selectedMealTable)">
+        <option value="" disabled selected>Select Calendar Week</option>
+        <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id">
+          {{weekMealTable.id }}
+        </option>
+      </select>
+    </div>
+    <h4>Calendar Week: {{ selectedMealTable }}</h4>
+    <div class="table-responsive">
       <table class="table">
         <thead>
-        <div class="form-group">
-          <label for="weeks">Select Week</label>
-          <select class="form-control" id="weeks" onchange="document.location.href = this.value">
-            <option disabled="disabled" selected>Please choose a week!</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </div>
-        <h4>Calendar Week: {{ $route.params.id }}</h4>
         <tr>
           <th scope="col">Day</th>
           <th>Meal</th>
@@ -33,12 +30,13 @@
         </tbody>
       </table>
     </div>
+    <router-link type="button" class="btn btn-outline-info add-button" to="/mealtable/add" tag="button">Add Meal Table</router-link>
   </div>
 </template>
 
 <script>
-import MealTableDataService from "@/service/MealTableDataService";
 
+import MealTableDataService from "@/service/MealTableDataService";
 
 export default {
   name: "MealTableWeekComponent",
@@ -46,6 +44,7 @@ export default {
     return {
       mealTables: {
         id: " ",
+        calendarWeek: "",
         mealTableWeek: {
           day: {
             id: " ",
@@ -54,25 +53,38 @@ export default {
             price: " "
           }
         }
-      }
+      },
+      weekMealTables: [],
+      amountWeekMealTables:'',
+      selectedMealTable: '',
     };
   },
   methods: {
-    refreshMealTable() {
-      const id = this.$route.params.id;
+    refreshMealTable(id) {
       MealTableDataService.retrieveMealTableById(id)
           .then(response => {
-            console.log(response)
             this.mealTables = response.data;
           });
-    }
+    },
+    retrieveWeekMealTables() {
+      MealTableDataService.retrieveAllMeatTables()
+          .then(response => {
+            this.weekMealTables = response.data;
+            this.amountWeekMealTables=(this.weekMealTables.length)+1;
+            console.log(this.amountWeekMealTables)
+          });
+    },
   },
   created() {
-    this.refreshMealTable();
+    this.refreshMealTable(1);
+    this.retrieveWeekMealTables();
   }
 };
 </script>
 
 <style scoped lang="scss">
 
+.add-button {
+  margin-top: 30px;
+}
 </style>
