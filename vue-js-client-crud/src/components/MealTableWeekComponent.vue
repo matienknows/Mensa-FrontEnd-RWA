@@ -30,7 +30,9 @@
         </tbody>
       </table>
     </div>
+    <router-link type="button" class="btn btn-outline-warning add-button" to="/mealtable/update" tag="button">Update Meal Table</router-link>
     <router-link type="button" class="btn btn-outline-info add-button" to="/mealtable/add" tag="button">Add Meal Table</router-link>
+    <router-link type="button" class="btn btn-outline-danger add-button" to="/mealtable/add" tag="button">Delete Meal Table</router-link>
   </div>
 </template>
 
@@ -87,6 +89,6 @@ export default {
 <style scoped lang="scss">
 
 .add-button {
-  margin-top: 30px;
+  margin: 30px 5px 10px 5px;
 }
 </style>

@@ -12,6 +12,10 @@ class MealTableDataService {
     addMealTableWeek(data) {
         return http.post('/mealtable', data);
     }
+
+    updateMealTableWeek(data) {
+        return http.put('/mealtable', data);
+    }
 }
 
 export default new MealTableDataService();

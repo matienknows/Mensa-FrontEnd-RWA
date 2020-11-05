@@ -7,22 +7,28 @@
         <div class="form-row text-center">
           <div class="form-group col-12">
             <label>Calendar Week</label>
-            <fieldset disabled>
-            <div class="form-group col-12">
-              <input class="form-control text-center" type="text" v-model="selectedCalendarWeek">
+            <div class="form-group">
+              <select class="form-control" id="optionMenu" v-model="selectedCalendarWeek" @change="refreshMealTable(selectedCalendarWeek)">
+                <option value="" disabled selected>Select Calendar Week</option>
+                <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id">
+                  {{weekMealTable.id }}
+                </option>
+              </select>
             </div>
-            </fieldset>
             <small class="form-text text-muted">The given Information is auto generated and can not be modified.</small>
             <small id="calendarErrorMsg" class="form-text text-muted">Please choose a week.</small>
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-6">
+          <div class="form-group col-4">
             <input type="text" value="Monday" class="form-control" onkeydown="return false">
           </div>
-          <div class="form-group col-6">
+          <div class="form-group col-4">
+            <input type="text" v-model="foodOnMonday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-4">
             <select class="form-control" v-model="selectedFoodMonday" id="selectedFoodMonday">
-              <option value="" disabled selected>Select the Food</option>
+              <option  value="" selected>Change to</option>
               <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
                 {{ meal.price }}
               </option>
@@ -31,12 +37,15 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-6">
+          <div class="form-group col-4">
             <input type="text" value="Tuesday" class="form-control" onkeydown="return false">
           </div>
-          <div class="form-group col-6">
+          <div class="form-group col-4">
+            <input type="text" v-model="foodOnTuesday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-4">
             <select class="form-control" v-model="selectedFoodTuesday" id="selectedFoodTuesday">
-              <option value="" disabled selected>Select the Food</option>
+              <option value="" disabled selected>Change to</option>
               <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
                 {{ meal.price }}
               </option>
@@ -45,12 +54,15 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-6">
+          <div class="form-group col-4">
             <input type="text" value="Wednesday" class="form-control" placeholder="Food Label" onkeydown="return false">
           </div>
-          <div class="form-group col-6">
+          <div class="form-group col-4">
+            <input type="text" v-model="foodOnWednesday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-4">
             <select class="form-control" v-model="selectedFoodWednesday" id="selectedFoodWednesday">
-              <option value="" disabled selected>Select the Food</option>
+              <option value="" disabled selected>Change to</option>
               <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
                 {{ meal.price }}
               </option>
@@ -59,12 +71,15 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-6">
+          <div class="form-group col-4">
             <input type="text" value="Thursday" class="form-control" onkeydown="return false">
           </div>
-          <div class="form-group col-6">
+          <div class="form-group col-4">
+            <input type="text" v-model="foodOnThursday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-4">
             <select class="form-control" v-model="selectedFoodThursday" id="selectedFoodThursday">
-              <option value="" disabled selected>Select the Food</option>
+              <option value="" disabled selected>Change to</option>
               <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
                 {{ meal.price }}
               </option>
@@ -73,12 +88,15 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-6">
+          <div class="form-group col-4">
             <input type="text" value="Friday" class="form-control" onkeydown="return false">
           </div>
-          <div class="form-group col-6">
+          <div class="form-group col-4">
+            <input type="text" v-model="foodOnFriday" class="form-control" onkeydown="return false">
+          </div>
+          <div class="form-group col-4">
             <select class="form-control" v-model="selectedFoodFriday" id="selectedFoodFriday">
-              <option value="" disabled selected>Select the Food</option>
+              <option value="" disabled selected>Change to</option>
               <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
                 {{ meal.price }}
               </option>
@@ -98,17 +116,39 @@
 </template>
 
 <script>
-import MealDataService from "@/service/MealDataService";
+
 import MealTableDataService from "@/service/MealTableDataService";
 import router from '@/router';
+import MealDataService from "@/service/MealDataService";
+//import $ from 'jquery';
 
 export default {
-  name: "MealTableWeekAddComponent",
+  name: "MealTableWeekUpdateComponent",
   data: function () {
     return {
-      meals: [],
+      mealTables: {
+        id: " ",
+        calendarWeek: "",
+        mealTableWeek: {
+          day: {
+            id: " ",
+            name: " ",
+            type: " ",
+            price: " "
+          }
+        }
+      },
 
-      selectedCalendarWeek: this.$store.getters.amount,
+      meals: [],
+      weekMealTables: [],
+
+      foodOnMonday:'',
+      foodOnTuesday:'',
+      foodOnWednesday:'',
+      foodOnThursday:'',
+      foodOnFriday:'',
+
+      selectedCalendarWeek: '',
       selectedFoodMonday: '',
       selectedFoodTuesday: '',
       selectedFoodWednesday: '',
@@ -122,10 +162,37 @@ export default {
     };
   },
   methods: {
+    resetForm() {
+      console.log("reset")
+      //$("select option[value='']").attr("selected","selected");
+    },
     refreshMeal() {
       MealDataService.retrieveAllMeals()
           .then(response => {
             this.meals = response.data;
+            console.log(this.mealTables.mealTableWeek["Monday"].id, this.mealTables.mealTableWeek["Monday"].name, this.mealTables.mealTableWeek["Monday"].type, this.mealTables.mealTableWeek["Monday"].price)
+          });
+    },
+    refreshMealTable(id) {
+      this.resetForm()
+      MealTableDataService.retrieveMealTableById(id)
+          .then(response => {
+            this.mealTables = response.data;
+            this.foodOnMonday = this.mealTables.mealTableWeek['Monday'].name;
+            this.foodOnTuesday = this.mealTables.mealTableWeek['Tuesday'].name,
+            this.foodOnWednesday = this.mealTables.mealTableWeek['Wednesday'].name,
+            this.foodOnThursday = this.mealTables.mealTableWeek['Thursday'].name,
+            this.foodOnFriday = this.mealTables.mealTableWeek['Friday'].name
+           });
+    },
+    retrieveWeekMealTables() {
+      MealTableDataService.retrieveAllMeatTables()
+          .then(response => {
+            this.weekMealTables = response.data;
+            this.amountWeekMealTables=(this.weekMealTables.length)+1;
+            this.$store.commit("setAmountWeekMealTables", {
+              newAmount: this.amountWeekMealTables,
+            });
           });
     },
     goBack() {
@@ -182,7 +249,7 @@ export default {
       var foodDetailsOnThursday = this.selectedFoodThursday.split(',');
       var foodDetailsOnFriday = this.selectedFoodFriday.split(',');
 
-      this.checkForm()
+       this.checkForm()
 
       if(this.errorMessage) {
         this.errorMessage = false
@@ -224,7 +291,7 @@ export default {
           }
         }
       }
-      MealTableDataService.addMealTableWeek(data)
+      MealTableDataService.updateMealTableWeek(data)
           .then(response => {
             console.log(response)
             document.getElementById("alert-failed").style.display = "none"
@@ -241,6 +308,8 @@ export default {
     }
   },
   created() {
+    this.refreshMealTable(1)
+    this.retrieveWeekMealTables()
     this.refreshMeal();
   }
 }
