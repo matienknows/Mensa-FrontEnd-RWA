@@ -8,10 +8,11 @@
           <div class="form-group col-12">
             <label>Calendar Week</label>
             <div class="form-group">
-              <select class="form-control" id="optionMenu" v-model="selectedCalendarWeek" @change="refreshMealTable(selectedCalendarWeek)">
+              <select class="form-control" id="optionMenu" v-model="selectedCalendarWeek"
+                      @change="refreshMealTable(selectedCalendarWeek)">
                 <option value="" disabled selected>Select Calendar Week</option>
                 <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id">
-                  {{weekMealTable.id }}
+                  {{ weekMealTable.id }}
                 </option>
               </select>
             </div>
@@ -27,8 +28,8 @@
             <input type="text" v-model="foodOnMonday" class="form-control" onkeydown="return false">
           </div>
           <div class="form-group col-4">
-            <select class="form-control" v-model="selectedFoodMonday" id="selectedFoodMonday">
-              <option  value="" selected>Change to</option>
+            <select class="form-control" v-model="selectedFoodMonday" id='selectedFoodMonday'>
+              <option value="" selected>Change to</option>
               <option v-for="meal in meals" v-bind:key="meal.id">{{ meal.id }},{{ meal.name }}, {{ meal.type }},
                 {{ meal.price }}
               </option>
@@ -120,6 +121,7 @@
 import MealTableDataService from "@/service/MealTableDataService";
 import router from '@/router';
 import MealDataService from "@/service/MealDataService";
+//import $ from "jquery";
 //import $ from 'jquery';
 
 export default {
@@ -142,11 +144,11 @@ export default {
       meals: [],
       weekMealTables: [],
 
-      foodOnMonday:'',
-      foodOnTuesday:'',
-      foodOnWednesday:'',
-      foodOnThursday:'',
-      foodOnFriday:'',
+      foodOnMonday: '',
+      foodOnTuesday: '',
+      foodOnWednesday: '',
+      foodOnThursday: '',
+      foodOnFriday: '',
 
       selectedCalendarWeek: '',
       selectedFoodMonday: '',
@@ -163,14 +165,16 @@ export default {
   },
   methods: {
     resetForm() {
-      console.log("reset")
-      //$("select option[value='']").attr("selected","selected");
+      this.selectedFoodMonday = '';
+      this.selectedFoodTuesday = '';
+      this.selectedFoodWednesday = '';
+      this.selectedFoodThursday = '';
+      this.selectedFoodFriday = '';
     },
     refreshMeal() {
       MealDataService.retrieveAllMeals()
           .then(response => {
             this.meals = response.data;
-            console.log(this.mealTables.mealTableWeek["Monday"].id, this.mealTables.mealTableWeek["Monday"].name, this.mealTables.mealTableWeek["Monday"].type, this.mealTables.mealTableWeek["Monday"].price)
           });
     },
     refreshMealTable(id) {
@@ -180,16 +184,16 @@ export default {
             this.mealTables = response.data;
             this.foodOnMonday = this.mealTables.mealTableWeek['Monday'].name;
             this.foodOnTuesday = this.mealTables.mealTableWeek['Tuesday'].name,
-            this.foodOnWednesday = this.mealTables.mealTableWeek['Wednesday'].name,
-            this.foodOnThursday = this.mealTables.mealTableWeek['Thursday'].name,
-            this.foodOnFriday = this.mealTables.mealTableWeek['Friday'].name
-           });
+                this.foodOnWednesday = this.mealTables.mealTableWeek['Wednesday'].name,
+                this.foodOnThursday = this.mealTables.mealTableWeek['Thursday'].name,
+                this.foodOnFriday = this.mealTables.mealTableWeek['Friday'].name
+          });
     },
     retrieveWeekMealTables() {
       MealTableDataService.retrieveAllMeatTables()
           .then(response => {
             this.weekMealTables = response.data;
-            this.amountWeekMealTables=(this.weekMealTables.length)+1;
+            this.amountWeekMealTables = (this.weekMealTables.length) + 1;
             this.$store.commit("setAmountWeekMealTables", {
               newAmount: this.amountWeekMealTables,
             });
@@ -201,31 +205,31 @@ export default {
     checkForm: function () {
       if (!this.selectedCalendarWeek) {
         document.getElementById("calendarErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("calendarErrorMsg").style.display = "none"
       }
       if (!this.selectedFoodMonday) {
         document.getElementById("mondayErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("mondayErrorMsg").style.display = "none"
       }
       if (!this.selectedFoodTuesday) {
         document.getElementById("tuesdayErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("tuesdayErrorMsg").style.display = "none"
       }
       if (!this.selectedFoodWednesday) {
         document.getElementById("wednesdayErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("wednesdayErrorMsg").style.display = "none"
       }
       if (!this.selectedFoodThursday) {
         document.getElementById("thursdayErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("thursdayErrorMsg").style.display = "none"
       }
@@ -249,9 +253,9 @@ export default {
       var foodDetailsOnThursday = this.selectedFoodThursday.split(',');
       var foodDetailsOnFriday = this.selectedFoodFriday.split(',');
 
-       this.checkForm()
+      this.checkForm()
 
-      if(this.errorMessage) {
+      if (this.errorMessage) {
         this.errorMessage = false
         return;
       }
@@ -317,8 +321,9 @@ export default {
 
 <style scoped lang="scss">
 .meal-table-add {
-  height:auto;
+  height: auto;
 }
+
 .button {
   margin: 30px 0px 30px 0px;
 }
