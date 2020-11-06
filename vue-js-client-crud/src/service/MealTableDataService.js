@@ -16,6 +16,9 @@ class MealTableDataService {
     updateMealTableWeek(data) {
         return http.put('/mealtable', data);
     }
+    deleteMealTableWeek(id) {
+        return http.delete(`/mealtable/${id}`);
+    }
 }
 
 export default new MealTableDataService();

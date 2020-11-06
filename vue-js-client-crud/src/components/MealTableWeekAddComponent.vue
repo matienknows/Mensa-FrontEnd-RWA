@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <section class="meal-table-add">
+  <section class="meal-table-add">
+    <div class="container">
       <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
       <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
       <form class="meal-table" @submit="checkForm">
@@ -8,9 +8,9 @@
           <div class="form-group col-12">
             <label>Calendar Week</label>
             <fieldset disabled>
-            <div class="form-group col-12">
-              <input class="form-control text-center" type="text" v-model="selectedCalendarWeek">
-            </div>
+              <div class="form-group col-12">
+                <input class="form-control text-center" type="text" v-model="selectedCalendarWeek">
+              </div>
             </fieldset>
             <small class="form-text text-muted">The given Information is auto generated and can not be modified.</small>
             <small id="calendarErrorMsg" class="form-text text-muted">Please choose a week.</small>
@@ -93,8 +93,8 @@
       <div class="button row justify-content-center">
         <button class="btn btn-outline-info col-6" v-on:click="goBack">Go Back</button>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -134,31 +134,31 @@ export default {
     checkForm: function () {
       if (!this.selectedCalendarWeek) {
         document.getElementById("calendarErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("calendarErrorMsg").style.display = "none"
       }
       if (!this.selectedFoodMonday) {
         document.getElementById("mondayErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("mondayErrorMsg").style.display = "none"
       }
       if (!this.selectedFoodTuesday) {
         document.getElementById("tuesdayErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("tuesdayErrorMsg").style.display = "none"
       }
       if (!this.selectedFoodWednesday) {
         document.getElementById("wednesdayErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("wednesdayErrorMsg").style.display = "none"
       }
       if (!this.selectedFoodThursday) {
         document.getElementById("thursdayErrorMsg").style.display = "block"
-        this.errorMessage= true;
+        this.errorMessage = true;
       } else {
         document.getElementById("thursdayErrorMsg").style.display = "none"
       }
@@ -184,7 +184,7 @@ export default {
 
       this.checkForm()
 
-      if(this.errorMessage) {
+      if (this.errorMessage) {
         this.errorMessage = false
         return;
       }
@@ -248,8 +248,9 @@ export default {
 
 <style scoped lang="scss">
 .meal-table-add {
-  height:auto;
+  height: auto;
 }
+
 .button {
   margin: 30px 0px 30px 0px;
 }

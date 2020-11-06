@@ -32,7 +32,7 @@
     </div>
     <router-link type="button" class="btn btn-outline-warning add-button" to="/mealtable/update" tag="button">Update Meal Table</router-link>
     <router-link type="button" class="btn btn-outline-info add-button" to="/mealtable/add" tag="button">Add Meal Table</router-link>
-    <router-link type="button" class="btn btn-outline-danger add-button" to="/mealtable/add" tag="button">Delete Meal Table</router-link>
+    <router-link type="button" class="btn btn-outline-danger add-button" to="/mealtable/delete" tag="button">Delete Meal Table</router-link>
   </div>
 </template>
 
