@@ -1,8 +1,18 @@
 <template>
   <div class="container">
-    <div>MealUpdateComponent</div>
+    <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
+    <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
+    <h3 class="page-title">Update Meal</h3>
     <form>
       <div class="text-center">
+        <div class="text-center">
+          <div class="form-row">
+            <div class="form-group col-lg-4 offset-lg-4">
+              <label>Name of Meal</label>
+              <input type="text" id="name" class="form-control" v-model="meal.name">
+            </div>
+          </div>
+        </div>
         <div class="form-row">
           <div class="form-group col-lg-4 offset-lg-4">
             <label>Type of the Meal</label>
@@ -22,24 +32,21 @@
       </div>
       <div class="text-center">
         <div class="form-row">
-          <div class="form-group col-lg-2 offset-lg-5">
+          <div class="form-group col-lg-4 offset-lg-4">
             <label>Price</label>
             <input type="text" id="price" step=".10" class="form-control" lang="en" v-model="meal.price">
           </div>
         </div>
       </div>
-      <div class="text-center">
-        <div class="form-row">
-          <div class="form-group col-lg-4 offset-lg-4">
-            <label>Name of Meal</label>
-            <input type="text" id="name" class="form-control" v-model="meal.name">
-          </div>
-        </div>
-      </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary" v-on:click="updateMealById">Update</button>
-      </div>
     </form>
+    <div class="button row justify-content-center">
+      <button class="btn btn-outline-info col-6" v-on:click="updateMealById">Update</button>
+    </div>
+    <div class="button row justify-content-center">
+      <router-link type="button" class="btn btn-outline-info col-6" to="/meal" tag="button">
+        Go Back
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -52,12 +59,13 @@ export default {
   data() {
     return {
       meal: [],
+      alertFailed: 'Your changes failed.',
+      alertSucces: 'Your changes were succesfully submitted.',
     };
   },
   methods: {
     refreshMeal() {
       var id = this.$route.params.id
-      alert(id);
       MealDataService.getMealById(id)
           .then(response => {
             this.meal = response.data;
@@ -74,7 +82,14 @@ export default {
       };
       MealDataService.updateMealById(data)
           .then(response => {
-            console.log(response.data);
+            console.log(response)
+            document.getElementById("alert-failed").style.display = "none"
+            document.getElementById("alert-succes").style.display = "block"
+          })
+          .catch(error => {
+            console.log(error)
+            document.getElementById("alert-succes").style.display = "none"
+            document.getElementById("alert-failed").style.display = "block"
           })
     }
   },
@@ -86,7 +101,26 @@ export default {
 
 <style scoped lang="scss">
 
+.page-title {
+  text-align: center;
+  margin: 30px 0 20px 0;
+}
+
 #type, #price, #name {
   text-align: center;
+}
+
+.button {
+  margin: 30px 0px 30px 0px;
+}
+
+#alert-failed {
+  margin: 30px 0px 30px 0px;
+  display: none;
+}
+
+#alert-succes {
+  margin: 30px 0px 30px 0px;
+  display: none;
 }
 </style>

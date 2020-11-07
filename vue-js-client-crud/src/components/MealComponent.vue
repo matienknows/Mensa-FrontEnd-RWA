@@ -22,17 +22,20 @@
           <td>{{ meal.price }}</td>
           <td>
             <div>
-              <b-button variant="outline-danger" @click="loadMealInfo(meal.id)" v-b-modal.delete-modal>
-                <div class="logo">
+              <b-button class="delete-button" variant="outline-info" @click="selectToUpdate(meal.id)" v-b-modal.delete-modal>
+                  <img src="../../src/assets/images/pen.svg" alt="trash can">
+              </b-button>
+              <b-button class="add-button" variant="outline-warning" @click="loadMealInfo(meal.id)" v-b-modal.delete-modal>
+                <img src="../../src/assets/images/plus.svg" alt="trash can">
+              </b-button>
+              <b-button class="update-button" variant="outline-danger" @click="loadMealInfo(meal.id)" v-b-modal.delete-modal>
                   <img src="../../src/assets/images/trash-can.svg" alt="trash can">
-                </div>
               </b-button>
             </div>
           </td>
         </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-outline-primary" v-on:click="selectToUpdate">Update</button>
     </div>
     <!-- Modal -->
     <b-modal id="delete-modal" ref="delete-modal" hide-footer title="Removal of a meal">
@@ -88,9 +91,8 @@ export default {
             document.getElementById("alert-failed").style.display = "block"
           })
     },
-    selectToUpdate: function () {
-      var currentUrl = window.location.pathname;
-      var id = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+    selectToUpdate(mealId) {
+      var id = mealId
       router.push({name: 'MealUpdateComponent', params: {id}})
     },
     loadMealInfo(mealId) {
@@ -118,5 +120,9 @@ export default {
 #alert-succes {
   margin: 30px 0px 30px 0px;
   display: none;
+}
+
+.delete-button, .update-button, .add-button {
+  margin-right: 5px ;
 }
 </style>

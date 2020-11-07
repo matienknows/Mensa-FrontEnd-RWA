@@ -230,13 +230,11 @@ export default {
             document.getElementById("alert-failed").style.display = "none"
             document.getElementById("alert-succes").style.display = "block"
             console.log("succes")
-            console.log(this.selectedCalendarWeek)
           })
           .catch(error => {
             console.log(error)
             document.getElementById("alert-succes").style.display = "none"
             document.getElementById("alert-failed").style.display = "block"
-            console.log(this.selectedCalendarWeek)
           })
     }
   },
