@@ -4,7 +4,7 @@ class MealDataService {
     retrieveAllMeals() {
         return http.get('/meal');
     }
-    delete(id) {
+    deleteMealById(id) {
         return http.delete(`/meal/${id}`);
     }
     getMealById(id) {
