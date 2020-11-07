@@ -182,11 +182,37 @@ export default {
       MealTableDataService.retrieveMealTableById(id)
           .then(response => {
             this.mealTables = response.data;
-            this.foodOnMonday = this.mealTables.mealTableWeek['Monday'].name;
-            this.foodOnTuesday = this.mealTables.mealTableWeek['Tuesday'].name,
-                this.foodOnWednesday = this.mealTables.mealTableWeek['Wednesday'].name,
-                this.foodOnThursday = this.mealTables.mealTableWeek['Thursday'].name,
-                this.foodOnFriday = this.mealTables.mealTableWeek['Friday'].name
+            try {
+              this.foodOnMonday = this.mealTables.mealTableWeek['Monday'].name;
+            }
+            catch(e) {
+              this.foodOnMonday = "No meal was deposited."
+              this.foodOnFriday = this.mealTables.mealTableWeek['Friday'].name;
+            }
+            try {
+              this.foodOnTuesday = this.mealTables.mealTableWeek['Tuesday'].name;
+            }
+            catch(e) {
+              this.foodOnTuesday = "No meal was deposited."
+            }
+            try {
+              this.foodOnWednesday = this.mealTables.mealTableWeek['Wednesday'].name;
+            }
+            catch(e) {
+              this.foodOnWednesday = "No meal was deposited."
+            }
+            try {
+              this.foodOnThursday = this.mealTables.mealTableWeek['Thursday'].name;
+            }
+            catch(e) {
+              this.foodOnThursday = "No meal was deposited."
+            }
+            try {
+              this.foodOnFriday = this.mealTables.mealTableWeek['Friday'].name;
+            }
+            catch(e) {
+              this.foodOnFriday = "No meal was deposited."
+            }
           });
     },
     retrieveWeekMealTables() {

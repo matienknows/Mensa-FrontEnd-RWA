@@ -114,10 +114,8 @@ export default {
       selectedFoodWednesday: '',
       selectedFoodThursday: '',
       selectedFoodFriday: '',
-
       alertFailed: 'Duplicate Selection: Please pick one Food once a week.',
       alertSucces: 'Your changes were succesfully submitted.',
-
       errorMessage: false
     };
   },
