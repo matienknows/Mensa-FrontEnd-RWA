@@ -40,7 +40,9 @@
         <button class="btn btn-outline-danger col-6" v-on:click="removeMealTableWeek(selectedMealTable)">Delete</button>
       </div>
       <div class="button row justify-content-center">
-        <button class="btn btn-outline-info col-6" v-on:click="goBack">Go Back</button>
+        <router-link type="button" class="btn btn-outline-info col-6" to="/weekly" tag="button">
+          Go Back
+        </router-link>
       </div>
     </div>
   </section>
@@ -49,7 +51,6 @@
 <script>
 
 import MealTableDataService from "@/service/MealTableDataService";
-import router from "@/router";
 
 export default {
   name: "MealTableWeekDeleteComponent",
@@ -101,9 +102,6 @@ export default {
             document.getElementById("alert-succes").style.display = "none"
             document.getElementById("alert-failed").style.display = "block"
           })
-    },
-    goBack() {
-      router.back()
     },
   },
   created() {

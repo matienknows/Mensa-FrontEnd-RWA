@@ -110,7 +110,9 @@
         <button class="btn btn-outline-danger col-6" v-on:click="addMealTableWeek">Submit</button>
       </div>
       <div class="button row justify-content-center">
-        <button class="btn btn-outline-info col-6" v-on:click="goBack">Go Back</button>
+        <router-link type="button" class="btn btn-outline-info col-6" to="/weekly" tag="button">
+          Go Back
+        </router-link>
       </div>
     </section>
   </div>
@@ -119,10 +121,8 @@
 <script>
 
 import MealTableDataService from "@/service/MealTableDataService";
-import router from '@/router';
 import MealDataService from "@/service/MealDataService";
-//import $ from "jquery";
-//import $ from 'jquery';
+
 
 export default {
   name: "MealTableWeekUpdateComponent",
@@ -184,33 +184,28 @@ export default {
             this.mealTables = response.data;
             try {
               this.foodOnMonday = this.mealTables.mealTableWeek['Monday'].name;
-            }
-            catch(e) {
+            } catch (e) {
               this.foodOnMonday = "No meal was deposited."
               this.foodOnFriday = this.mealTables.mealTableWeek['Friday'].name;
             }
             try {
               this.foodOnTuesday = this.mealTables.mealTableWeek['Tuesday'].name;
-            }
-            catch(e) {
+            } catch (e) {
               this.foodOnTuesday = "No meal was deposited."
             }
             try {
               this.foodOnWednesday = this.mealTables.mealTableWeek['Wednesday'].name;
-            }
-            catch(e) {
+            } catch (e) {
               this.foodOnWednesday = "No meal was deposited."
             }
             try {
               this.foodOnThursday = this.mealTables.mealTableWeek['Thursday'].name;
-            }
-            catch(e) {
+            } catch (e) {
               this.foodOnThursday = "No meal was deposited."
             }
             try {
               this.foodOnFriday = this.mealTables.mealTableWeek['Friday'].name;
-            }
-            catch(e) {
+            } catch (e) {
               this.foodOnFriday = "No meal was deposited."
             }
           });
@@ -224,9 +219,6 @@ export default {
               newAmount: this.amountWeekMealTables,
             });
           });
-    },
-    goBack() {
-      router.back()
     },
     checkForm: function () {
       if (!this.selectedCalendarWeek) {

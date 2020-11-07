@@ -91,7 +91,9 @@
         <button class="btn btn-outline-danger col-6" v-on:click="addMealTableWeek">Submit</button>
       </div>
       <div class="button row justify-content-center">
-        <button class="btn btn-outline-info col-6" v-on:click="goBack">Go Back</button>
+        <router-link type="button" class="btn btn-outline-info col-6" to="/weekly" tag="button">
+          Go Back
+        </router-link>
       </div>
     </div>
   </section>
