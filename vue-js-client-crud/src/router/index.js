@@ -25,7 +25,7 @@ const routes = [
         component: MealComponent,
     },
     {
-        path: '/weekly/:id',
+        path: '/weekly',
         name: 'MealTableWeekComponent',
         component: MealTableWeekComponent,
     },
