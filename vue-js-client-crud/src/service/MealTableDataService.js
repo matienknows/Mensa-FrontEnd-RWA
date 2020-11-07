@@ -19,6 +19,9 @@ class MealTableDataService {
     deleteMealTableWeek(id) {
         return http.delete(`/mealtable/${id}`);
     }
+    deleteMealFromTableWeek(mealTableId, mealId, weekday) {
+        return http.delete(`/mealtable/${mealTableId}/delete/${mealId}/${weekday}`);
+    }
 }
 
 export default new MealTableDataService();
