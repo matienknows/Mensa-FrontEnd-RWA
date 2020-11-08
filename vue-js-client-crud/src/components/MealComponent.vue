@@ -3,7 +3,10 @@
     <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
     <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
     <h3>Meal Table</h3>
-    <div class="container">
+    <router-link type="button" class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning" to="/meal/add">
+      <img class="trash-can" src="../../src/assets/images/plus.svg" alt="trash can">
+    </router-link>
+    <div class="table-responsive meal-list">
       <table class="table table-hover">
         <thead>
         <tr>
@@ -22,14 +25,13 @@
           <td>{{ meal.price }}</td>
           <td>
             <div>
-              <b-button class="delete-button" variant="outline-info" @click="selectToUpdate(meal.id)" v-b-modal.delete-modal>
-                  <img src="../../src/assets/images/pen.svg" alt="trash can">
+              <b-button class="delete-button" variant="outline-info" @click="selectToUpdate(meal.id)"
+                        v-b-modal.delete-modal>
+                <img src="../../src/assets/images/pen.svg" alt="trash can">
               </b-button>
-              <b-button class="add-button" variant="outline-warning" @click="loadMealInfo(meal.id)" v-b-modal.delete-modal>
-                <img src="../../src/assets/images/plus.svg" alt="trash can">
-              </b-button>
-              <b-button class="update-button" variant="outline-danger" @click="loadMealInfo(meal.id)" v-b-modal.delete-modal>
-                  <img src="../../src/assets/images/trash-can.svg" alt="trash can">
+              <b-button class="update-button" variant="outline-danger" @click="loadMealInfo(meal.id)"
+                        v-b-modal.delete-modal>
+                <img src="../../src/assets/images/trash-can.svg" alt="trash can">
               </b-button>
             </div>
           </td>
@@ -64,6 +66,7 @@ export default {
       },
       alertFailed: 'The removal failed.',
       alertSucces: 'The removal was succesfully processed.',
+
     };
   },
   methods: {
@@ -79,12 +82,12 @@ export default {
     deleteMealById() {
       this.hideModal()
       MealDataService.deleteMealById(this.selectedMeal.mealId)
-            .then(response => {
-              console.log(response)
-              document.getElementById("alert-failed").style.display = "none"
-              document.getElementById("alert-succes").style.display = "block"
-              this.refreshMeal()
-            })
+          .then(response => {
+            console.log(response)
+            document.getElementById("alert-failed").style.display = "none"
+            document.getElementById("alert-succes").style.display = "block"
+            this.refreshMeal()
+          })
           .catch(error => {
             console.log(error)
             document.getElementById("alert-succes").style.display = "none"
@@ -112,6 +115,10 @@ export default {
   text-decoration-color: white;
 }
 
+.add-button {
+  margin: 20px 0;
+}
+
 #alert-failed {
   margin: 30px 0px 30px 0px;
   display: none;
@@ -122,7 +129,8 @@ export default {
   display: none;
 }
 
-.delete-button, .update-button, .add-button {
-  margin-right: 5px ;
+.delete-button, .update-button {
+  margin-right: 5px;
 }
+
 </style>

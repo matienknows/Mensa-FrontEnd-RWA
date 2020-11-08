@@ -13,5 +13,8 @@ class MealDataService {
     updateMealById(data) {
         return http.put('/meal', data);
     }
+    addMealById(data) {
+        return http.post('/meal', data);
+    }
 }
 export default new MealDataService();
