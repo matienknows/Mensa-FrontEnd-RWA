@@ -8,9 +8,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" href="/meal">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="/home">Home<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="/weekly">Meal Table</a>
-          <a class="nav-link" href="#">Meal List</a>
+          <a class="nav-link" href="/meal">Meal List</a>
         </div>
       </div>
     </nav>

@@ -7,11 +7,16 @@ import MealUpdateComponent from "@/components/MealUpdateComponent";
 import MealTableWeekUpdateComponent from "@/components/MealTableWeekUpdateComponent";
 import MealTableWeekDeleteComponent from "@/components/MealTableWeekDeleteComponent";
 import MealAddComponent from "@/components/MealAddComponent";
+import LandingComponent from "@/components/LandingComponent";
 
 
 Vue.use(VueRouter)
 
 const routes = [
+    {
+        path: '/home',
+        component: LandingComponent,
+    },
     {
         path: '/meal',
         component: MealComponent,
