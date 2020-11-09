@@ -3,11 +3,13 @@
     <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
     <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
     <h3>Meal Table</h3>
-    <router-link type="button" class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning" to="/meal/add">
+    <router-link type="button" class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning"
+                 to="/meal/add">
       <img class="trash-can" src="../../src/assets/images/plus.svg" alt="trash can">
     </router-link>
+    <SearchBoxComponent></SearchBoxComponent>
     <div class="table-responsive meal-list">
-      <table class="table table-hover">
+      <table id="meal-list" class="table table-hover">
         <thead>
         <tr>
           <th>ID</th>
@@ -55,9 +57,11 @@
 <script>
 import MealDataService from "@/service/MealDataService";
 import router from "@/router";
+import SearchBoxComponent from "@/components/SearchBoxComponent";
 
 export default {
   name: "MealComponent",
+  components: {SearchBoxComponent},
   data() {
     return {
       meals: [],
@@ -66,7 +70,6 @@ export default {
       },
       alertFailed: 'The removal failed.',
       alertSucces: 'The removal was succesfully processed.',
-
     };
   },
   methods: {
