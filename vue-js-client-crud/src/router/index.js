@@ -8,11 +8,22 @@ import MealTableWeekUpdateComponent from "@/components/MealTableWeekUpdateCompon
 import MealTableWeekDeleteComponent from "@/components/MealTableWeekDeleteComponent";
 import MealAddComponent from "@/components/MealAddComponent";
 import LandingComponent from "@/components/LandingComponent";
+import LoginComponent from "@/components/LoginComponent";
+import LogoutComponent from "@/components/LogoutComponent";
 
 
 Vue.use(VueRouter)
 
 const routes = [
+
+    {
+        path: '/logout',
+        component: LogoutComponent,
+    },
+    {
+        path: '/login',
+        component: LoginComponent,
+    },
     {
         path: '/home',
         component: LandingComponent,

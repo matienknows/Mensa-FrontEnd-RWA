@@ -13,13 +13,17 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-form>
             </b-nav-form>
-            <b-nav-item-dropdown right>
+            <b-nav-item href="/login" right>
+                <img class="trash-can" src="../../src/assets/images/user.svg" alt="user">
+            </b-nav-item>
+            <b-nav-item href="/logout" v-on:click="userLogout">Logout</b-nav-item>
+            <!--<b-nav-item-dropdown right>
               <template #button-content>
                <img class="trash-can" src="../../src/assets/images/user.svg" alt="user">
               </template>
               <b-dropdown-item href="/admin">Profile</b-dropdown-item>
               <b-dropdown-item href="/home">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>
+            </b-nav-item-dropdown>-->
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -29,8 +33,16 @@
 </template>
 
 <script>
+import AuthenticationService from "@/service/AuthenticationService";
+
 export default {
-  name: "Navigation"
+  name: "Navigation",
+
+  methods: {
+    userLogout() {
+      AuthenticationService.logout()
+    }
+  }
 }
 </script>
 
