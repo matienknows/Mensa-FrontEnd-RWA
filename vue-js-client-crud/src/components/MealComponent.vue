@@ -77,6 +77,7 @@ export default {
       this.$refs['delete-modal'].hide()
     },
     refreshMeal() {
+      console.log("calling all meals")
       MealDataService.retrieveAllMeals()
           .then(response => {
             this.meals = response.data;

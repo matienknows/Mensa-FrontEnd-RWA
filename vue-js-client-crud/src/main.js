@@ -4,8 +4,10 @@ import router from './router'
 import axios from 'axios'
 import store from "./store";
 
-Vue.prototype.$http = axios
+Vue.prototype.http = axios
 Vue.config.productionTip = false
+
+
 
 new Vue({
     store,

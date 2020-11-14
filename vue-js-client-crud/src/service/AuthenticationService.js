@@ -1,9 +1,25 @@
 import http from '../http-common'
 
+
 class AuthenticationService {
-    registerSuccesfulLogin(username) {
-        console.log("AUTHENTICATED SERVICE")
-        sessionStorage.setItem('authenticatedUser', username)
+    registerSuccesfulLogin(username, password) {
+        //sessionStorage.setItem('authenticatedUser', username)
+        //this.setupAxiosInterceptors(this.createBasicAuthToken(username, password))
+        this.setupAxiosInterceptors(this.createBasicAuthToken(username, password))
+    }
+x
+    startAuthentication(username, password) {
+        console.log("AuthenticationService", username, password)
+        //return http.get('/basicauth', {headers: {authorization: this.createBasicAuthToken(username, password)}});
+        return http.get('/basicauth', {headers: {authorization: this.createBasicAuthToken(username, password)}});
+
+    }
+
+    createBasicAuthToken(username, password) {
+        console.log("createdAuthenticationToken:", username, password)
+        let userToken = 'Basic '  + window.btoa(username + ":" + password);
+        sessionStorage.setItem('authenticatedUser', username )
+        return userToken
     }
 
     logout() {
@@ -14,16 +30,16 @@ class AuthenticationService {
         let user = sessionStorage.getItem('authenticatedUser');
         if (user === null) return false
         return true
-
     }
-    setupAxiosInterceptors() {
-        let username = 'user'
-        let password = 'pass'
-        let basicAuthHeader = 'Basic ' + window.btoa(username + ':' + password);
 
+    setupAxiosInterceptors(userToken) {
         http.interceptors.request.use(
             (config) => {
-                config.headers.authorization = basicAuthHeader
+                if (this.isUserLoggedIn()) {
+                    config.headers.Authorization = userToken
+                    console.log("Interceptor is called:", sessionStorage.getItem('authenticatedUser'))
+                }
+                return config
             }
         )
     }

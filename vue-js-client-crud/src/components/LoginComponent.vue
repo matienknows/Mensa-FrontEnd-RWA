@@ -33,13 +33,19 @@ export default {
   },
   methods: {
     proveAuthenticaiton() {
-      if (this.username === 'user' && this.password === 'pass') {
-        AuthenticationService.registerSuccesfulLogin(this.username)
-        this.alertSucces = true
-        this.$router.push({path: 'meal'})
-      } else {
-        console.log("failed")
-      }
+      console.log("Login:proveAuthenticaiton", this.username, this.password)
+      AuthenticationService.startAuthentication(this.username, this.password)
+          .then(() => {
+            console.log("executed")
+            AuthenticationService.registerSuccesfulLogin(this.username, this.password)
+            this.$store.commit("setUserStatus", {
+              newStatus: true
+            });
+            this.$router.push({path: 'meal'})
+          })
+          .catch(() => {
+            console.log("failed")
+          })
     }
   }
 }
