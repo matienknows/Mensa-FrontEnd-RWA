@@ -9,7 +9,6 @@
 <script>
 import Navigation from "@/layouts/Navigation";
 import Footer from "@/layouts/Footer";
-
 export default {
   name: 'App',
   components: {
@@ -21,5 +20,4 @@ export default {
 
 <style lang="scss">
 @import 'src/assets/scss/imports/bootstrap';
-
 </style>

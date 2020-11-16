@@ -37,11 +37,13 @@ export default {
       AuthenticationService.startAuthentication(this.username, this.password)
           .then(() => {
             console.log("executed")
+            this.$store.commit('setUserStatus', true)
+            console.log("safed user date in store")
             AuthenticationService.registerSuccesfulLogin(this.username, this.password)
             this.$store.commit("setUserStatus", {
               newStatus: true
             });
-            this.$router.push({path: 'meal'})
+            this.$router.replace({name: 'meal'})
           })
           .catch(() => {
             console.log("failed")

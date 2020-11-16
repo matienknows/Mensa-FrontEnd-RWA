@@ -3,8 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 footer-text">
-          <h5 class="text-uppercase">Food</h5>
-          <p>We are serving you good food</p>
+          <h5>DAILY FRESH FOOD</h5>
         </div>
       </div>
     </div>
@@ -19,12 +18,13 @@ export default {
 
 <style scoped lang="scss">
 .page-footer {
+  height: 10vh;
   width: 100%;
   background-color: #DB037B;
+  color: white;
 
   .footer-text {
-    padding: 50px 50px;
-    color: white;
+    margin-top: 20px
   }
 }
 </style>

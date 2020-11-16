@@ -1,19 +1,11 @@
 <template>
-  <div>
-    <b-carousel id="carousel-fade" img-width="1024"
-                img-height="480" fade indicators>
-      <b-carousel-slide class="img-item" caption="First slide" img-src="../../src/assets/images/burger.jpg"></b-carousel-slide>
-      <b-carousel-slide class="img-item" caption="Second Slide" img-src="https://picsum.photos/1024/480/?image=12"
-      ></b-carousel-slide>
-      <b-carousel-slide class="img-item" caption="Third Slide" img-src="https://picsum.photos/1024/480/?image=22"
-      ></b-carousel-slide>
-    </b-carousel>
-  </div>
+    <div>hi</div>
 </template>
 
 <script>
+
 export default {
-  name: "LandingComponent"
+  name: "LandingComponent",
 }
 </script>
 

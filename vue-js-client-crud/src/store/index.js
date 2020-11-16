@@ -28,8 +28,8 @@ export default new Vuex.Store({
         setAmountWeekMealTables(state, payload) {
             state.amountWeekMealTables = payload.newAmount
         },
-        setUserStatus(state, payload) {
-            state.isUserLoggedIn = payload.newStatus
+        setUserStatus(state, status) {
+            state.isUserLoggedIn = status;
         },
         setBasicAuthHeader(state, payload) {
             state.basicAuthHeader = payload.newHeader
