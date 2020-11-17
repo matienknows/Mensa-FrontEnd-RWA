@@ -110,7 +110,7 @@ export default {
     return {
       meals: [],
 
-      selectedCalendarWeek: thlis.$store.getters.amount,
+      selectedCalendarWeek: this.$store.getters.amount,
       selectedFoodMonday: '',
       selectedFoodTuesday: '',
       selectedFoodWednesday: '',
