@@ -37,8 +37,7 @@ export default {
           .then(() => {
             if (this.username === 'admin') {
               this.$store.commit('setUserStatus', 'admin')
-            }
-            else if (this.username === 'user') {
+            } else if (this.username === 'user') {
               this.$store.commit('setUserStatus', 'user')
             }
             AuthenticationService.registerSuccesfulLogin(this.username, this.password)

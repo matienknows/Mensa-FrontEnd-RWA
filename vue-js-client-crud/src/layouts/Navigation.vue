@@ -16,7 +16,9 @@
             <b-nav-item to="/login" right>
               <img class="user" src="../../src/assets/images/user.svg" alt="user">
             </b-nav-item>
-            <b-nav-item v-if="checkUser == 'admin'|| checkUser == 'user' " href="/logout" v-on:click="userLogout">Logout</b-nav-item>
+            <b-nav-item v-if="checkUser == 'admin'|| checkUser == 'user' " href="/logout" v-on:click="userLogout">
+              Logout
+            </b-nav-item>
             <!--<b-nav-item-dropdown right>
               <template #button-content>
                <img class="trash-can" src="../../src/assets/images/user.svg" alt="user">
@@ -47,8 +49,7 @@ export default {
     checkUser: function () {
       if (this.$store.state.userStatus == 'admin') {
         return 'admin';
-      }
-      else if (this.$store.state.userStatus == 'user') {
+      } else if (this.$store.state.userStatus == 'user') {
         return 'user';
       }
       return false;

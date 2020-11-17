@@ -4,15 +4,15 @@ class AuthenticationService {
     registerSuccesfulLogin(username, password) {
         this.setupAxiosInterceptors(this.createBasicAuthToken(username, password))
     }
-x
+
     startAuthentication(username, password) {
         return http.get('/basicauth', {headers: {authorization: this.createBasicAuthToken(username, password)}});
 
     }
 
     createBasicAuthToken(username, password) {
-        let userToken = 'Basic '  + window.btoa(username + ":" + password);
-        sessionStorage.setItem('authenticatedUser', username )
+        let userToken = 'Basic ' + window.btoa(username + ":" + password);
+        sessionStorage.setItem('authenticatedUser', username)
         return userToken
     }
 
