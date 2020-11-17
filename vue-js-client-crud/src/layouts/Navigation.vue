@@ -1,7 +1,7 @@
 <template>
   <header class="page-header">
     <div>
-      <b-navbar toggleable="lg" variant="light">
+      <b-navbar class="navbar" toggleable="lg" variant="light">
         <b-navbar-brand href="/home">FOOD</b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
@@ -59,6 +59,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .navbar-brand {
   color: #DB037B !important;
 }
@@ -66,5 +67,4 @@ export default {
 .nav-link {
   color: grey;
 }
-
 </style>
