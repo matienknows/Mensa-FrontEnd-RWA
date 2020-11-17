@@ -175,12 +175,12 @@ export default {
 
 <style scoped lang="scss">
 #alert-failed {
-  margin: 30px 0px 30px 0px;
+  margin: 30px 0 30px 0;
   display: none;
 }
 
 #alert-succes {
-  margin: 30px 0px 30px 0px;
+  margin: 30px 0 30px 0;
   display: none;
 }
 
