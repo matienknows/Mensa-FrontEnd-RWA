@@ -1,10 +1,12 @@
 <template>
-  <footer class="container-fluid">
-      <nav class="navbar fixed-bottom">
-          <div class="text justify-content-center">
-              DAILY FRESH FOOD
-          </div>
-      </nav>
+  <footer class="page-footer fixed-bottom">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 footer-text">
+          <h5>DAILY FRESH FOOD</h5>
+        </div>
+      </div>
+    </div>
   </footer>
 </template>
 
@@ -15,17 +17,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-
-$footer-height: 10vh;
-$footer-height-sm: 10vh;
-
-.text {
-  text-align: center;
-  color: white;
-}
-.navbar {
+.page-footer {
+  height: 10vh;
+  width: 100%;
   background-color: #DB037B;
-  height: $footer-height;
+  color: white;
+
+  .footer-text {
+    margin-top: 20px
+  }
 }
 </style>

@@ -10,6 +10,7 @@ import MealAddComponent from "@/components/MealAddComponent";
 import LandingComponent from "@/components/LandingComponent";
 import LoginComponent from "@/components/LoginComponent";
 import LogoutComponent from "@/components/LogoutComponent";
+import AuthenticationService from "@/service/AuthenticationService";
 
 
 Vue.use(VueRouter)
@@ -18,10 +19,12 @@ const routes = [
 
     {
         path: '/logout',
+        name: 'logout',
         component: LogoutComponent,
     },
     {
         path: '/login',
+        name: 'login',
         component: LoginComponent,
     },
     {
@@ -30,14 +33,24 @@ const routes = [
     },
     {
         path: '/meal',
+        name: 'meal',
         component: MealComponent,
+        /*beforeEnter: (to, from, next) => {
+            if (this.$store.state.userStatus == false) {
+                next(false);
+            } else {
+                next();
+            }
+        }*/
     },
-    {   path: '/meal/add',
-        name:'MealAddComponent',
+    {
+        path: '/meal/add',
+        name: 'MealAddComponent',
         component: MealAddComponent,
     },
-    {   path: '/meal/:id/update',
-        name:'MealUpdateComponent',
+    {
+        path: '/meal/:id/update',
+        name: 'MealUpdateComponent',
         component: MealUpdateComponent,
     },
     {
@@ -71,6 +84,12 @@ const router = new VueRouter({
     mode: 'history',
     routes
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.name !== 'login' && AuthenticationService.isUserLoggedIn() == false) next({name: 'login'})
+    else next()
+})
+
 
 export default router
 

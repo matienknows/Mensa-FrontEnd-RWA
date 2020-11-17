@@ -21,5 +21,4 @@ export default {
 
 <style lang="scss">
 @import 'src/assets/scss/imports/bootstrap';
-
 </style>

@@ -1,24 +1,21 @@
 //this is the second index.js file which responsible for centralized data sharing
-
 import Vue from "vue";
 import Vuex from "vuex";
-import { BootstrapVue } from 'bootstrap-vue'
 
 Vue.use(Vuex);
-Vue.use(BootstrapVue)
 
 export default new Vuex.Store({
     state: {
-        amountWeekMealTables:'',
-        isUserLoggedIn: false,
+        amountWeekMealTables: '',
+        userStatus: false,
         basicAuthHeader: '',
     },
     getters: {
         amount: state => {
             return state.amountWeekMealTables
         },
-        userStatus: state => {
-            return state.isUserLoggedIn
+        getUserStatus(state) {
+            return state.userStatus
         },
         getBasicAuthHeader: state => {
             return state.basicAuthHeader
@@ -29,10 +26,7 @@ export default new Vuex.Store({
             state.amountWeekMealTables = payload.newAmount
         },
         setUserStatus(state, payload) {
-            state.isUserLoggedIn = payload.newStatus
-        },
-        setBasicAuthHeader(state, payload) {
-            state.basicAuthHeader = payload.newHeader
+            state.userStatus = payload;
         },
     },
     actions: {}
