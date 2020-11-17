@@ -22,7 +22,7 @@
           <th>Meal</th>
           <th>Type</th>
           <th>Price ($)</th>
-          <th>Actions</th>
+          <th v-if="checkUser == 'admin'" >Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@
           <td>{{ meal.price }}</td>
           <td>
             <div>
-              <b-button variant="outline-danger" @click="loadMealInfo(key, meal.id)" v-b-modal.delete-modal>
+              <b-button  v-if="checkUser == 'admin'" variant="outline-danger" @click="loadMealInfo(key, meal.id)" v-b-modal.delete-modal>
                 <div class="logo">
                   <img src="../../src/assets/images/trash-can.svg" alt="trash can">
                 </div>
@@ -45,12 +45,12 @@
         </tbody>
       </table>
     </div>
-    <router-link type="button" class="btn btn-outline-warning add-button" to="/mealtable/update" tag="button">Update
+    <router-link v-if="checkUser == 'admin'" type="button" class="btn btn-outline-warning add-button" to="/mealtable/update" tag="button">Update
       Meal Table
     </router-link>
-    <router-link type="button" class="btn btn-outline-info add-button" to="/mealtable/add" tag="button">Add Meal Table
+    <router-link  v-if="checkUser == 'admin'"  type="button" class="btn btn-outline-info add-button" to="/mealtable/add" tag="button">Add Meal Table
     </router-link>
-    <router-link type="button" class="btn btn-outline-danger add-button" to="/mealtable/delete" tag="button">Delete Meal
+    <router-link v-if="checkUser == 'admin'"  type="button" class="btn btn-outline-danger add-button" to="/mealtable/delete" tag="button">Delete Meal
       Table
     </router-link>
     <!-- Modal -->
@@ -123,7 +123,7 @@ export default {
             console.log(response)
             document.getElementById("alert-failed").style.display = "none"
             document.getElementById("alert-succes").style.display = "block"
-            if (this.selectedMealTable !== ''){
+            if (this.selectedMealTable !== '') {
               this.refreshMealTable(this.selectedMealTable);
             }
           })
@@ -151,6 +151,15 @@ export default {
       }
       this.selectedMeal.mealId = mealId;
       this.selectedMeal.mealTableWeekId = this.selectedMealTable;
+    }
+  },
+
+  computed: {
+    checkUser: function () {
+      if (this.$store.state.userStatus == 'admin') {
+        return 'admin';
+      }
+      return false;
     }
   },
   created() {

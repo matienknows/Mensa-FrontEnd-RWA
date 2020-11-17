@@ -3,7 +3,7 @@
     <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
     <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
     <h3>Meal Table</h3>
-    <router-link type="button" class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning"
+    <router-link v-if="checkUser == 'admin'"  type="button" class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning"
                  to="/meal/add">
       <img class="trash-can" src="../../src/assets/images/plus.svg" alt="trash can">
     </router-link>
@@ -16,7 +16,7 @@
           <th>Meal</th>
           <th>Type</th>
           <th>Price ($)</th>
-          <th>Actions</th>
+          <th v-if="checkUser == 'admin'" >Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -27,11 +27,11 @@
           <td>{{ meal.price }}</td>
           <td>
             <div>
-              <b-button class="delete-button" variant="outline-info" @click="selectToUpdate(meal.id)"
+              <b-button v-if="checkUser == 'admin'"  class="delete-button" variant="outline-info" @click="selectToUpdate(meal.id)"
                         v-b-modal.delete-modal>
                 <img src="../../src/assets/images/pen.svg" alt="trash can">
               </b-button>
-              <b-button class="update-button" variant="outline-danger" @click="loadMealInfo(meal.id)"
+              <b-button v-if="checkUser == 'admin'"  class="update-button" variant="outline-danger" @click="loadMealInfo(meal.id)"
                         v-b-modal.delete-modal>
                 <img src="../../src/assets/images/trash-can.svg" alt="trash can">
               </b-button>
@@ -70,6 +70,7 @@ export default {
       },
       alertFailed: 'The removal failed.',
       alertSucces: 'The removal was succesfully processed.',
+
     };
   },
   methods: {
@@ -104,6 +105,15 @@ export default {
     },
     loadMealInfo(mealId) {
       this.selectedMeal.mealId = mealId;
+    },
+  },
+
+  computed: {
+    checkUser: function () {
+      if (this.$store.state.userStatus == 'admin') {
+        return 'admin';
+      }
+      return false;
     }
   },
   created() {

@@ -33,23 +33,22 @@ export default {
   },
   methods: {
     proveAuthenticaiton() {
-      console.log("Login:proveAuthenticaiton", this.username, this.password)
       AuthenticationService.startAuthentication(this.username, this.password)
           .then(() => {
-            console.log("executed")
-            this.$store.commit('setUserStatus', true)
-            console.log("safed user date in store")
+            if (this.username === 'admin') {
+              this.$store.commit('setUserStatus', 'admin')
+            }
+            else if (this.username === 'user') {
+              this.$store.commit('setUserStatus', 'user')
+            }
             AuthenticationService.registerSuccesfulLogin(this.username, this.password)
-            this.$store.commit("setUserStatus", {
-              newStatus: true
-            });
             this.$router.replace({name: 'meal'})
           })
           .catch(() => {
             console.log("failed")
           })
     }
-  }
+  },
 }
 </script>
 
