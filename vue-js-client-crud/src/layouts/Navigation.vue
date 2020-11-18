@@ -13,7 +13,7 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-form>
             </b-nav-form>
-            <b-nav-item to="/login" right>
+            <b-nav-item v-if="checkUser == ''" to="/login" right>
               <img class="user" src="../../src/assets/images/user.svg" alt="user">
             </b-nav-item>
             <b-nav-item v-if="checkUser == 'admin'|| checkUser == 'user' " href="/logout" v-on:click="userLogout">

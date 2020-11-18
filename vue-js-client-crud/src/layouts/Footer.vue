@@ -23,6 +23,10 @@ export default {
   background-color: #DB037B;
   color: white;
 
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+
   .footer-text {
     margin-top: 20px
   }
