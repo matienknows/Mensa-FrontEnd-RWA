@@ -27,9 +27,9 @@
           </thead>
           <tbody>
           <tr v-for="(meal, key) in mealTables.mealTableWeek" v-bind:key="meal.id">
-            <td>
+            <td v-if="checkUser == 'admin'">
               <div>
-                <b-button v-if="checkUser == 'admin'" variant="outline-danger" @click="loadMealInfo(key, meal.id)"
+                <b-button variant="outline-danger" @click="loadMealInfo(key, meal.id)"
                           v-b-modal.delete-modal>
                   <div class="logo">
                     <img src="../../src/assets/images/trash-can.svg" alt="trash can">

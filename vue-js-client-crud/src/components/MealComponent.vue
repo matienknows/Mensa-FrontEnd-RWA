@@ -23,14 +23,14 @@
           </thead>
           <tbody>
           <tr class="mealDetails" v-for="meal in meals" v-bind:key="meal.id">
-            <td>
+            <td v-if="checkUser == 'admin'">
               <div>
-                <b-button v-if="checkUser == 'admin'" class="delete-button" variant="outline-info"
+                <b-button class="delete-button" variant="outline-info"
                           @click="selectToUpdate(meal.id)"
                           v-b-modal.delete-modal>
                   <img src="../../src/assets/images/pen.svg" alt="trash can">
                 </b-button>
-                <b-button v-if="checkUser == 'admin'" class="update-button" variant="outline-danger"
+                <b-button class="update-button" variant="outline-danger"
                           @click="loadMealInfo(meal.id)"
                           v-b-modal.delete-modal>
                   <img src="../../src/assets/images/trash-can.svg" alt="trash can">
