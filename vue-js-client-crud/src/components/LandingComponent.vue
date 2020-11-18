@@ -47,6 +47,13 @@ export default {
 
 <style scoped lang="scss">
 
+a {
+  color: white;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
 .background {
   min-height: 500px;
   background-size: cover;
@@ -67,14 +74,15 @@ export default {
 }
 
 .veggy {
-  background-image: url('../../src/assets/images/veggy.jpg');
+  background-image: url('../../src/assets/images/emiliano.jpg');
 }
 
 
 .jumbotron {
-  background: #DB037B;
   margin-bottom: 0;
   padding-bottom: 35px;
+  background: rgb(219,3,123);
+  background: linear-gradient(16deg, rgba(219,3,123,1) 0%, rgba(219,3,218,1) 81%);
   color: white;
 }
 

@@ -14,19 +14,15 @@
         <table id="meal-list" class="table table-hover">
           <thead>
           <tr>
+            <th v-if="checkUser == 'admin'">Actions</th>
             <th>ID</th>
             <th>Meal</th>
             <th>Type</th>
             <th>Price ($)</th>
-            <th v-if="checkUser == 'admin'">Actions</th>
           </tr>
           </thead>
           <tbody>
           <tr class="mealDetails" v-for="meal in meals" v-bind:key="meal.id">
-            <td class="id">{{ meal.id }}</td>
-            <td>{{ meal.name }}</td>
-            <td>{{ meal.type }}</td>
-            <td>{{ meal.price }}</td>
             <td>
               <div>
                 <b-button v-if="checkUser == 'admin'" class="delete-button" variant="outline-info"
@@ -41,6 +37,10 @@
                 </b-button>
               </div>
             </td>
+            <td class="id">{{ meal.id }}</td>
+            <td>{{ meal.name }}</td>
+            <td>{{ meal.type }}</td>
+            <td>{{ meal.price }}</td>
           </tr>
           </tbody>
         </table>
@@ -128,6 +128,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+thead {
+  background: rgb(219,3,123);
+  background: linear-gradient(16deg, rgba(219,3,123,1) 0%, rgba(219,3,218,1) 81%);
+  color: white;
+}
 
 .page-title {
   margin: 35px 0 35px 0;

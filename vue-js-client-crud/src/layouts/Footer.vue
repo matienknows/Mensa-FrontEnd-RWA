@@ -20,7 +20,8 @@ export default {
 .page-footer {
   height: 10vh;
   width: 100%;
-  background-color: #DB037B;
+  background: rgb(219,3,123);
+  background: linear-gradient(16deg, rgba(219,3,123,1) 0%, rgba(219,3,218,1) 81%);
   color: white;
 
   @media only screen and (max-width: 600px) {

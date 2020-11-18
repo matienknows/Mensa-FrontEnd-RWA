@@ -17,21 +17,16 @@
         <table class="table">
           <thead>
           <tr>
+            <th v-if="checkUser == 'admin'">Actions</th>
             <th scope="col">Day</th>
             <th scope="col">ID</th>
             <th>Meal</th>
             <th>Type</th>
             <th>Price ($)</th>
-            <th v-if="checkUser == 'admin'">Actions</th>
           </tr>
           </thead>
           <tbody>
           <tr v-for="(meal, key) in mealTables.mealTableWeek" v-bind:key="meal.id">
-            <td>{{ key }}</td>
-            <td>{{ meal.id }}</td>
-            <td>{{ meal.name }}</td>
-            <td>{{ meal.type }}</td>
-            <td>{{ meal.price }}</td>
             <td>
               <div>
                 <b-button v-if="checkUser == 'admin'" variant="outline-danger" @click="loadMealInfo(key, meal.id)"
@@ -42,6 +37,12 @@
                 </b-button>
               </div>
             </td>
+            <td>{{ key }}</td>
+            <td>{{ meal.id }}</td>
+            <td>{{ meal.name }}</td>
+            <td>{{ meal.type }}</td>
+            <td>{{ meal.price }}</td>
+
           </tr>
           </tbody>
         </table>
@@ -176,10 +177,17 @@ export default {
 
 <style scoped lang="scss">
 
+
 .page-title {
   margin: 35px 0 35px 0;
   text-align: center;
   color: #DB037B;
+}
+
+thead {
+  background: rgb(219,3,123);
+  background: linear-gradient(16deg, rgba(219,3,123,1) 0%, rgba(219,3,218,1) 81%);
+  color: white;
 }
 
 #alert-failed {

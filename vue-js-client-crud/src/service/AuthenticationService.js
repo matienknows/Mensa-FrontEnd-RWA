@@ -26,12 +26,6 @@ class AuthenticationService {
         return true
     }
 
-    checkUser() {
-        let user = sessionStorage.getItem('authenticatedUser');
-        if (user === null) return false
-        return true
-    }
-
     setupAxiosInterceptors(userToken) {
         http.interceptors.request.use(
             (config) => {
