@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Navigation></Navigation>
+    <body>
     <router-view></router-view>
+    </body>
     <Footer></Footer>
   </div>
 </template>
@@ -21,4 +23,5 @@ export default {
 <style lang="scss">
 @import 'src/assets/scss/imports/bootstrap';
 @import 'src/assets/scss/imports/fonts';
+@import 'src/assets/scss/imports/general';
 </style>

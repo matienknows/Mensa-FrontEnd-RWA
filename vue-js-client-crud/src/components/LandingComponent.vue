@@ -1,13 +1,16 @@
 <template>
   <section class="landing">
-    <div class="container-fluid h-100 background vegan">
-      <div class="row h-100 align-items-center">
-        <div class="col-12 slogan">
-          <h1>MEAL TABLE</h1>
-          <p>Daily fresh food</p>
+      <div class="container-fluid h-100 background vegan">
+        <div class="row h-100 align-items-center">
+          <div class="col-12 slogan">
+            <h1>MEAL TABLE</h1>
+            <h3>Daily fresh food</h3>
+            <router-link type="button" class="btn btn-outline-light add-button"
+                         to="/login" tag="button">Login
+            </router-link>
+          </div>
         </div>
       </div>
-    </div>
     <div class="jumbotron jumbotron-fluid">
       <div class="container-fluid">
         <div class="row">
@@ -47,6 +50,13 @@ export default {
 
 <style scoped lang="scss">
 
+section {
+  margin-top: 0;
+}
+
+button {
+
+}
 a {
   color: white;
 }
@@ -54,18 +64,21 @@ a {
 h1 {
   margin-bottom: 20px;
 }
+
 .background {
-  min-height: 500px;
+  min-height: 90vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   .slogan {
     position: relative;
-    color: white;
+    top:35px;
     left: 50%;
     transform: translate(-50%, 150%);
     text-align: center;
+    color: white;
+    font-weight: bolder;
   }
 }
 
@@ -81,8 +94,8 @@ h1 {
 .jumbotron {
   margin-bottom: 0;
   padding-bottom: 35px;
-  background: rgb(219,3,123);
-  background: linear-gradient(16deg, rgba(219,3,123,1) 0%, rgba(219,3,218,1) 81%);
+  background: rgb(219, 3, 123);
+  background: linear-gradient(16deg, rgba(219, 3, 123, 1) 0%, rgba(219, 3, 218, 1) 81%);
   color: white;
 }
 

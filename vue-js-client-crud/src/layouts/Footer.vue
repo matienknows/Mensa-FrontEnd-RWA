@@ -2,7 +2,7 @@
   <footer class="page-footer fixed-bottom">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6 footer-text">
+        <div class="col-12 footer-text">
           <h5>DAILY FRESH FOOD</h5>
         </div>
       </div>
@@ -29,7 +29,8 @@ export default {
   }
 
   .footer-text {
-    margin-top: 20px
+    margin-top: 20px;
+    text-align: center;
   }
 }
 </style>
