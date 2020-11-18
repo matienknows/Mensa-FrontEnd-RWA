@@ -47,10 +47,6 @@ export default {
 
 <style scoped lang="scss">
 
-p, h1, h4 {
-  color: white;
-}
-
 .background {
   min-height: 500px;
   background-size: cover;
@@ -59,9 +55,9 @@ p, h1, h4 {
 
   .slogan {
     position: relative;
+    color: white;
     left: 50%;
     transform: translate(-50%, 150%);
-    color: white;
     text-align: center;
   }
 }
@@ -79,6 +75,7 @@ p, h1, h4 {
   background: #DB037B;
   margin-bottom: 0;
   padding-bottom: 35px;
+  color: white;
 }
 
 @media only screen and (max-width: 600px) {
