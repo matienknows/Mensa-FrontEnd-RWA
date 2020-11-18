@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <section class="meal-table-add">
+    <section class="meal-table-update">
+      <h1 class="page-title">Update a Mealplan</h1>
       <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
       <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
       <form class="meal-table" @submit="checkForm">
         <div class="form-row text-center">
           <div class="form-group col-12">
-            <label>Calendar Week</label>
             <div class="form-group">
               <select class="form-control" id="optionMenu" v-model="selectedCalendarWeek"
                       @change="refreshMealTable(selectedCalendarWeek)">
@@ -340,6 +340,12 @@ export default {
 <style scoped lang="scss">
 .meal-table-add {
   height: auto;
+}
+
+.page-title {
+  margin: 35px 0 35px 0;
+  text-align: center;
+  color: #DB037B;
 }
 
 .button {

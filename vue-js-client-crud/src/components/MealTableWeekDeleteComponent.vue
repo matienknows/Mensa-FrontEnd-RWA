@@ -1,12 +1,11 @@
 <template>
   <section class="meal-table-delete">
     <div class="container">
+      <h1 class="page-title">Delete a Meal Table</h1>
       <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
       <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
-      <h3 class="title">Delete a Meal Table</h3>
       <div class="form-row text-center">
         <div class="form-group col-12">
-          <label>Calendar Week</label>
           <select class="form-control" id="optionMenu" v-model="selectedMealTable"
                   @change="refreshMealTable(selectedMealTable)">
             <option value="" disabled selected>Select Calendar Week</option>
@@ -111,7 +110,14 @@ export default {
 };
 </script>
 
+
 <style scoped lang="scss">
+
+.page-title {
+  margin: 35px 0 35px 0;
+  text-align: center;
+  color: #DB037B;
+}
 
 .title {
   margin: 30px 0px 30px 0px;

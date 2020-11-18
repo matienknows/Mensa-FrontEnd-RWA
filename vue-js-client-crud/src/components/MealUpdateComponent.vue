@@ -1,53 +1,55 @@
 <template>
-  <div class="container">
-    <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
-    <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
-    <h3 class="page-title">Update Meal</h3>
-    <form>
-      <div class="text-center">
+  <section class="meal-update">
+    <div class="container">
+      <h1 class="page-title">Update a Meal</h1>
+      <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
+      <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
+      <form>
+        <div class="text-center">
+          <div class="text-center">
+            <div class="form-row">
+              <div class="form-group col-lg-4 offset-lg-4">
+                <label>Name of Meal</label>
+                <input type="text" id="name" class="form-control" v-model="meal.name">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-4 offset-lg-4">
+              <label>Type of the Meal</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="type">Options</label>
+                </div>
+                <select class="custom-select" id="type" v-model="meal.type">
+                  <option selected>Choose...</option>
+                  <option value='fleischhaltig'>fleischhaltig</option>
+                  <option value="vegetarisch">vegetarisch</option>
+                  <option value="vegan">vegan</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="text-center">
           <div class="form-row">
             <div class="form-group col-lg-4 offset-lg-4">
-              <label>Name of Meal</label>
-              <input type="text" id="name" class="form-control" v-model="meal.name">
+              <label>Price</label>
+              <input type="text" id="price" step=".10" class="form-control" lang="en" v-model="meal.price">
             </div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-lg-4 offset-lg-4">
-            <label>Type of the Meal</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="type">Options</label>
-              </div>
-              <select class="custom-select" id="type" v-model="meal.type">
-                <option selected>Choose...</option>
-                <option value='fleischhaltig'>fleischhaltig</option>
-                <option value="vegetarisch">vegetarisch</option>
-                <option value="vegan">vegan</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      </form>
+      <div class="button row justify-content-center">
+        <button class="btn btn-outline-info col-6" v-on:click="updateMealById">Update</button>
       </div>
-      <div class="text-center">
-        <div class="form-row">
-          <div class="form-group col-lg-4 offset-lg-4">
-            <label>Price</label>
-            <input type="text" id="price" step=".10" class="form-control" lang="en" v-model="meal.price">
-          </div>
-        </div>
+      <div class="button row justify-content-center">
+        <router-link type="button" class="btn btn-outline-info col-6" to="/meal" tag="button">
+          Go Back
+        </router-link>
       </div>
-    </form>
-    <div class="button row justify-content-center">
-      <button class="btn btn-outline-info col-6" v-on:click="updateMealById">Update</button>
     </div>
-    <div class="button row justify-content-center">
-      <router-link type="button" class="btn btn-outline-info col-6" to="/meal" tag="button">
-        Go Back
-      </router-link>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -102,8 +104,9 @@ export default {
 <style scoped lang="scss">
 
 .page-title {
+  margin: 35px 0 35px 0;
   text-align: center;
-  margin: 30px 0 20px 0;
+  color: #DB037B;
 }
 
 #type, #price, #name {

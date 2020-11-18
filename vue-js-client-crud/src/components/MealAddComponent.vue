@@ -1,57 +1,59 @@
 <template>
-  <div class="container">
-    <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
-    <div class="text-center" id="alert-redirect">{{ alertRedirect }}</div>
-    <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
-    <h3 class="page-title">Add Meal</h3>
-    <form>
-      <div class="text-center">
+  <section class="meal-add">
+    <div class="container">
+      <h1 class="page-title">Add a Meal</h1>
+      <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
+      <div class="text-center" id="alert-redirect">{{ alertRedirect }}</div>
+      <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
+      <form>
+        <div class="text-center">
+          <div class="text-center">
+            <div class="form-row">
+              <div class="form-group col-lg-4 offset-lg-4">
+                <label>Name of Meal</label>
+                <input type="text" id="name" class="form-control" v-model="meal.name">
+                <small id="nameErrorMsg" class="form-text text-muted">Please type a meal.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-4 offset-lg-4">
+              <label>Type of the Meal</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="type">Options</label>
+                </div>
+                <select class="custom-select" id="type" v-model="meal.type">
+                  <option selected>Choose...</option>
+                  <option value='fleischhaltig'>fleischhaltig</option>
+                  <option value="vegetarisch">vegetarisch</option>
+                  <option value="vegan">vegan</option>
+                </select>
+              </div>
+              <small id="typeErrorMsg" class="form-text text-muted">Please select a type.</small>
+            </div>
+          </div>
+        </div>
         <div class="text-center">
           <div class="form-row">
             <div class="form-group col-lg-4 offset-lg-4">
-              <label>Name of Meal</label>
-              <input type="text" id="name" class="form-control" v-model="meal.name">
-              <small id="nameErrorMsg" class="form-text text-muted">Please type a meal.</small>
+              <label>Price</label>
+              <input type="text" id="price" step=".10" class="form-control" lang="en" v-model="meal.price">
+              <small id="priceErrorMsg" class="form-text text-muted">Please consider a price.</small>
             </div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-lg-4 offset-lg-4">
-            <label>Type of the Meal</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="type">Options</label>
-              </div>
-              <select class="custom-select" id="type" v-model="meal.type">
-                <option selected>Choose...</option>
-                <option value='fleischhaltig'>fleischhaltig</option>
-                <option value="vegetarisch">vegetarisch</option>
-                <option value="vegan">vegan</option>
-              </select>
-            </div>
-            <small id="typeErrorMsg" class="form-text text-muted">Please select a type.</small>
-          </div>
-        </div>
+      </form>
+      <div class="button row justify-content-center">
+        <button class="btn btn-outline-warning col-6" v-on:click="postMealById">Add</button>
       </div>
-      <div class="text-center">
-        <div class="form-row">
-          <div class="form-group col-lg-4 offset-lg-4">
-            <label>Price</label>
-            <input type="text" id="price" step=".10" class="form-control" lang="en" v-model="meal.price">
-            <small id="priceErrorMsg" class="form-text text-muted">Please consider a price.</small>
-          </div>
-        </div>
+      <div class="button row justify-content-center">
+        <router-link type="button" class="btn btn-outline-info col-6" to="/meal" tag="button">
+          Go Back
+        </router-link>
       </div>
-    </form>
-    <div class="button row justify-content-center">
-      <button class="btn btn-outline-warning col-6" v-on:click="postMealById">Add</button>
     </div>
-    <div class="button row justify-content-center">
-      <router-link type="button" class="btn btn-outline-info col-6" to="/meal" tag="button">
-        Go Back
-      </router-link>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -133,6 +135,12 @@ export default {
 <style scoped lang="scss">
 
 .page-title {
+  margin: 35px 0 35px 0;
+  text-align: center;
+  color: #DB037B;
+}
+
+.page-title {
   text-align: center;
   margin: 30px 0 20px 0;
 }
@@ -158,7 +166,7 @@ export default {
 #alert-redirect {
   margin: 30px 0px 30px 0px;
   display: none;
-  color:forestgreen;
+  color: forestgreen;
 }
 
 #nameErrorMsg {

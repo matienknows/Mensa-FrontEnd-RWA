@@ -1,57 +1,62 @@
 <template>
-  <div class="container">
-    <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
-    <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
-    <h3>Meal Table</h3>
-    <router-link v-if="checkUser == 'admin'"  type="button" class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning"
-                 to="/meal/add">
-      <img class="trash-can" src="../../src/assets/images/plus.svg" alt="trash can">
-    </router-link>
-    <SearchBoxComponent></SearchBoxComponent>
-    <div class="table-responsive meal-list">
-      <table id="meal-list" class="table table-hover">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Meal</th>
-          <th>Type</th>
-          <th>Price ($)</th>
-          <th v-if="checkUser == 'admin'" >Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="mealDetails" v-for="meal in meals" v-bind:key="meal.id">
-          <td class="id">{{ meal.id }}</td>
-          <td>{{ meal.name }}</td>
-          <td>{{ meal.type }}</td>
-          <td>{{ meal.price }}</td>
-          <td>
-            <div>
-              <b-button v-if="checkUser == 'admin'"  class="delete-button" variant="outline-info" @click="selectToUpdate(meal.id)"
-                        v-b-modal.delete-modal>
-                <img src="../../src/assets/images/pen.svg" alt="trash can">
-              </b-button>
-              <b-button v-if="checkUser == 'admin'"  class="update-button" variant="outline-danger" @click="loadMealInfo(meal.id)"
-                        v-b-modal.delete-modal>
-                <img src="../../src/assets/images/trash-can.svg" alt="trash can">
-              </b-button>
-            </div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+  <section class="meal-list">
+    <div class="container">
+      <h1 class="page-title">Meal Table</h1>
+      <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
+      <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
+      <router-link v-if="checkUser == 'admin'" type="button"
+                   class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning"
+                   to="/meal/add">
+        <img class="trash-can" src="../../src/assets/images/plus.svg" alt="trash can">
+      </router-link>
+      <SearchBoxComponent></SearchBoxComponent>
+      <div class="table-responsive meal-list">
+        <table id="meal-list" class="table table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Meal</th>
+            <th>Type</th>
+            <th>Price ($)</th>
+            <th v-if="checkUser == 'admin'">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="mealDetails" v-for="meal in meals" v-bind:key="meal.id">
+            <td class="id">{{ meal.id }}</td>
+            <td>{{ meal.name }}</td>
+            <td>{{ meal.type }}</td>
+            <td>{{ meal.price }}</td>
+            <td>
+              <div>
+                <b-button v-if="checkUser == 'admin'" class="delete-button" variant="outline-info"
+                          @click="selectToUpdate(meal.id)"
+                          v-b-modal.delete-modal>
+                  <img src="../../src/assets/images/pen.svg" alt="trash can">
+                </b-button>
+                <b-button v-if="checkUser == 'admin'" class="update-button" variant="outline-danger"
+                          @click="loadMealInfo(meal.id)"
+                          v-b-modal.delete-modal>
+                  <img src="../../src/assets/images/trash-can.svg" alt="trash can">
+                </b-button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Modal -->
+      <b-modal id="delete-modal" ref="delete-modal" hide-footer title="Removal of a meal">
+        <p class="my-4">Are you want to delete the selected meal?</p>
+        <p class="my-4">Warning: This action will delete all days in the meal tables, which contain this meal.</p>
+        <b-button class="modal-button" variant="outline-danger" block @click="hideModal">Cancel</b-button>
+        <b-button class="modal-button" variant="outline-info" block @click="deleteMealById">
+          Yes,
+          sure.
+        </b-button>
+      </b-modal>
     </div>
-    <!-- Modal -->
-    <b-modal id="delete-modal" ref="delete-modal" hide-footer title="Removal of a meal">
-      <p class="my-4">Are you want to delete the selected meal?</p>
-      <p class="my-4">Warning: This action will delete all days in the meal tables, which contain this meal.</p>
-      <b-button class="modal-button" variant="outline-danger" block @click="hideModal">Cancel</b-button>
-      <b-button class="modal-button" variant="outline-info" block @click="deleteMealById">
-        Yes,
-        sure.
-      </b-button>
-    </b-modal>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -124,6 +129,11 @@ export default {
 
 <style scoped lang="scss">
 
+.page-title {
+  margin: 35px 0 35px 0;
+  text-align: center;
+  color: #DB037B;
+}
 .selected {
   background-color: grey;
   text-decoration-color: white;

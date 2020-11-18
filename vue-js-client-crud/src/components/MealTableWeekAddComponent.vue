@@ -1,6 +1,7 @@
 <template>
   <section class="meal-table-add">
     <div class="container">
+      <h1 class="page-title">Meal Table</h1>
       <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
       <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
       <form class="meal-table" @submit="checkForm">
@@ -245,6 +246,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.page-title {
+  margin: 35px 0 35px 0;
+  text-align: center;
+  color: #DB037B;
+}
+
 .meal-table-add {
   height: auto;
 }
