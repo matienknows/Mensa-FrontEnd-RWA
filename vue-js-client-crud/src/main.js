@@ -12,20 +12,21 @@ Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 
-const vm =new Vue({
+const vm = new Vue({
     store,
     router,
     render: h => h(App)
 })
- const token = localStorage.getItem('token')
-    console.log("token", token)
-   http.interceptors.request.use(
-    (config) => {
-        if (token) {
-            config.headers.Authorization = token
-        }
-        return config
-    }
-);
 
-    vm.$mount('#app')
+const token = localStorage.getItem('token')
+
+if (token) {
+    http.interceptors.request.use(
+        (config) => {
+            config.headers.Authorization = token
+            return config
+        }
+    );
+}
+
+vm.$mount('#app')

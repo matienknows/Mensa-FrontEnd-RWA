@@ -22,6 +22,7 @@ class AuthenticationService {
 
     logout() {
         localStorage.removeItem('token');
+        sessionStorage.clear()
     }
 
     isUserLoggedIn() {
