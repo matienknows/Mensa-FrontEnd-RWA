@@ -66,7 +66,7 @@ navbar {
 }
 
 .btn-danger {
-  background-color: #DB037B;
+  background-color: #DB037B ;
   border-color: #DB037B;
 }
 

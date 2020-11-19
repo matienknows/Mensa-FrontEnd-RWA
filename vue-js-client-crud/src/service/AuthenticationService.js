@@ -1,7 +1,10 @@
 import http from '../http-common'
+//import store from '../store/index'
+
 
 class AuthenticationService {
     registerSuccesfulLogin(username, password) {
+        console.log("calling setupAxiosIntecptor")
         this.setupAxiosInterceptors(this.createBasicAuthToken(username, password))
     }
 
@@ -31,6 +34,7 @@ class AuthenticationService {
             (config) => {
                 if (this.isUserLoggedIn()) {
                     config.headers.Authorization = userToken
+                    console.log(userToken)
                 }
                 return config
             }

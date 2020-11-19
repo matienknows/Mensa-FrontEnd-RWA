@@ -8,6 +8,7 @@ export default new Vuex.Store({
     state: {
         amountWeekMealTables: '',
         userStatus: false,
+        token: localStorage.getItem('token') || '',
         basicAuthHeader: '',
     },
     getters: {
@@ -17,9 +18,9 @@ export default new Vuex.Store({
         getUserStatus(state) {
             return state.userStatus
         },
-        getBasicAuthHeader: state => {
+        getBasicAuthHeader(state) {
             return state.basicAuthHeader
-        }
+        },
     },
     mutations: {
         setAmountWeekMealTables(state, payload) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
         },
         setUserStatus(state, payload) {
             state.userStatus = payload;
+        },
+        setBasicAuthHeader(state, payload) {
+            state.basicAuthHeader = payload;
         },
     },
     actions: {}
