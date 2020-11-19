@@ -14,18 +14,19 @@ class AuthenticationService {
     }
 
     createBasicAuthToken(username, password) {
-        let userToken = 'Basic ' + window.btoa(username + ":" + password);
-        sessionStorage.setItem('authenticatedUser', username)
-        return userToken
+        let token = 'Basic ' + window.btoa(username + ":" + password);
+        localStorage.setItem('token', token)
+        //sessionStorage.setItem('authenticatedUser', username)
+        return token
     }
 
     logout() {
-        sessionStorage.removeItem('authenticatedUser');
+        localStorage.removeItem('token');
     }
 
     isUserLoggedIn() {
-        let user = sessionStorage.getItem('authenticatedUser');
-        if (user === null) return false
+        let token = localStorage.getItem('token');
+        if (token === null) return false
         return true
     }
 
