@@ -9,7 +9,12 @@
                    to="/meal/add">
         <img class="trash-can" src="../../src/assets/images/plus.svg" alt="trash can">
       </router-link>
-      <SearchBoxComponent></SearchBoxComponent>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><img class="trash-can" src="../../src/assets/images/glass.svg" alt="magnifying glass"></span>
+        </div>
+        <input type="text" class="form-control" id="searchInput" v-on:keyup="searchFilter()" placeholder="Search for Meal">
+      </div>
       <div class="table-responsive meal-list">
         <table id="meal-list" class="table table-hover">
           <thead>
@@ -62,11 +67,9 @@
 <script>
 import MealDataService from "@/service/MealDataService";
 import router from "@/router";
-import SearchBoxComponent from "@/components/SearchBoxComponent";
 
 export default {
   name: "MealComponent",
-  components: {SearchBoxComponent},
   data() {
     return {
       meals: [],
@@ -88,6 +91,26 @@ export default {
           .then(response => {
             this.meals = response.data;
           });
+    },
+    searchFilter() {
+      var input, filter, table, tr, td, i, searchText;
+
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("meal-list");
+      tr = table.getElementsByTagName("tr");
+
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+          searchText = td.textContent || td.innerText;
+          if (searchText.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
     },
     deleteMealById() {
       this.hideModal()
@@ -135,6 +158,8 @@ thead {
   color: white;
 }
 
+
+
 .page-title {
   margin: 35px 0 35px 0;
   text-align: center;
@@ -160,7 +185,7 @@ thead {
 }
 
 .delete-button, .update-button {
-  margin-right: 5px;
+  margin: 5px;
 }
 
 </style>
