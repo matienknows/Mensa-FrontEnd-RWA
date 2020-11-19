@@ -71,11 +71,9 @@ export default {
       MealDataService.getMealById(id)
           .then(response => {
             this.meal = response.data;
-            console.log(response);
           })
     },
     updateMealById() {
-      console.log(this.meal.type)
       var data = {
         id: this.meal.id,
         name: this.meal.name,

@@ -4,17 +4,11 @@
       <h1 class="page-title">Meal Table</h1>
       <div class="alert alert-success hide text-center" id="alert-succes" role="alert">{{ alertSucces }}</div>
       <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
-      <router-link v-if="checkUser == 'admin'" type="button"
-                   class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning"
+      <router-link v-if="checkUser == 'admin'" type="button" class="btn btn-outline-warning col-lg-3 col-sm-6 add-button" variant="outline-warning"
                    to="/meal/add">
         <img class="trash-can" src="../../src/assets/images/plus.svg" alt="trash can">
       </router-link>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><img class="trash-can" src="../../src/assets/images/glass.svg" alt="magnifying glass"></span>
-        </div>
-        <input type="text" class="form-control" id="searchInput" v-on:keyup="searchFilter()" placeholder="Search for Meal">
-      </div>
+      <SearchBoxComponent></SearchBoxComponent>
       <div class="table-responsive meal-list">
         <table id="meal-list" class="table table-hover">
           <thead>
@@ -67,9 +61,11 @@
 <script>
 import MealDataService from "@/service/MealDataService";
 import router from "@/router";
+import SearchBoxComponent from "@/components/SearchBoxComponent";
 
 export default {
   name: "MealComponent",
+  components: {SearchBoxComponent},
   data() {
     return {
       meals: [],
@@ -86,7 +82,6 @@ export default {
       this.$refs['delete-modal'].hide()
     },
     refreshMeal() {
-      console.log("calling all meals")
       MealDataService.retrieveAllMeals()
           .then(response => {
             this.meals = response.data;
@@ -153,18 +148,17 @@ export default {
 <style scoped lang="scss">
 
 thead {
-  background: rgb(219,3,123);
-  background: linear-gradient(16deg, rgba(219,3,123,1) 0%, rgba(219,3,218,1) 81%);
+  background: rgb(219, 3, 123);
+  background: linear-gradient(16deg, rgba(219, 3, 123, 1) 0%, rgba(219, 3, 218, 1) 81%);
   color: white;
 }
-
-
 
 .page-title {
   margin: 35px 0 35px 0;
   text-align: center;
   color: #DB037B;
 }
+
 .selected {
   background-color: grey;
   text-decoration-color: white;

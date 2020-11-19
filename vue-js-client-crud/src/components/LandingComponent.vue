@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 text-center">
-            <h1>Salon</h1>
+            <h1>Our Cafeteria</h1>
           </div>
         </div>
         <div class="row mx-auto justify-content-center">
@@ -52,57 +52,55 @@ export default {
 
 section {
   margin-top: 0;
-}
 
-button {
-
-}
-a {
-  color: white;
-}
-
-h1 {
-  margin-bottom: 20px;
-}
-
-.background {
-  min-height: 90vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  .slogan {
-    position: relative;
-    top:35px;
-    left: 50%;
-    transform: translate(-50%, 150%);
-    text-align: center;
+  a {
     color: white;
-    font-weight: bolder;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .background {
+    min-height: 90vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .slogan {
+      position: relative;
+      top:35px;
+      left: 50%;
+      transform: translate(-50%, 150%);
+      text-align: center;
+      color: white;
+      font-weight: bolder;
+    }
+  }
+
+  .vegan {
+    background-image: url('../../src/assets/images/vegan.jpg');
+  }
+
+  .veggy {
+    background-image: url('../../src/assets/images/emiliano.jpg');
+  }
+
+  .jumbotron {
+    margin-bottom: 0;
+    padding-bottom: 35px;
+    background: rgb(219, 3, 123);
+    background: linear-gradient(16deg, rgba(219, 3, 123, 1) 0%, rgba(219, 3, 218, 1) 81%);
+    color: white;
+  }
+
+  @media only screen and (max-width: 600px) {
+    [class*="col-"] {
+      margin-bottom: 30px;
+    }
   }
 }
 
-.vegan {
-  background-image: url('../../src/assets/images/vegan.jpg');
-}
 
-.veggy {
-  background-image: url('../../src/assets/images/emiliano.jpg');
-}
-
-
-.jumbotron {
-  margin-bottom: 0;
-  padding-bottom: 35px;
-  background: rgb(219, 3, 123);
-  background: linear-gradient(16deg, rgba(219, 3, 123, 1) 0%, rgba(219, 3, 218, 1) 81%);
-  color: white;
-}
-
-@media only screen and (max-width: 600px) {
-  [class*="col-"] {
-    margin-bottom: 30px;
-  }
-}
 
 </style>

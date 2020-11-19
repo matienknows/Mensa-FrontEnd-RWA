@@ -1,6 +1,7 @@
 <template>
   <section class="login">
     <div class="container">
+      <div class="alert alert-danger hide text-center" id="alert-failed" role="alert">{{ alertFailed }}</div>
       <div class="login-logo text-center">
         <img class="user" src="../../src/assets/images/user.svg" alt="user">
       </div>
@@ -33,8 +34,7 @@ export default {
     return {
       username: '',
       password: '',
-      alertFailed: 'The created meal could not be added.',
-      alertSucces: false,
+      alertFailed: 'Your typed data is invalid. Please check your input',
       hasLoginFailed: false,
     };
   },
@@ -51,7 +51,7 @@ export default {
             this.$router.replace({name: 'meal'})
           })
           .catch(() => {
-            console.log("failed")
+            document.getElementById("alert-failed").style.display = "block"
           })
     }
   },
@@ -64,6 +64,11 @@ export default {
   img {
     width: 25px;
   }
+}
+
+#alert-failed {
+  margin: 30px 0px 30px 0px;
+  display: none;
 }
 
 </style>

@@ -177,6 +177,11 @@ export default {
 
 <style scoped lang="scss">
 
+thead {
+  background: rgb(219, 3, 123);
+  background: linear-gradient(16deg, rgba(219, 3, 123, 1) 0%, rgba(219, 3, 218, 1) 81%);
+  color: white;
+}
 
 .page-title {
   margin: 35px 0 35px 0;
@@ -184,10 +189,12 @@ export default {
   color: #DB037B;
 }
 
-thead {
-  background: rgb(219,3,123);
-  background: linear-gradient(16deg, rgba(219,3,123,1) 0%, rgba(219,3,218,1) 81%);
-  color: white;
+.add-button {
+  margin: 30px 5px 10px 5px;
+}
+
+.modal-button {
+  margin: 15px 10px 10px 0;
 }
 
 #alert-failed {
@@ -200,11 +207,4 @@ thead {
   display: none;
 }
 
-.add-button {
-  margin: 30px 5px 10px 5px;
-}
-
-.modal-button {
-  margin: 15px 10px 10px 0;
-}
 </style>

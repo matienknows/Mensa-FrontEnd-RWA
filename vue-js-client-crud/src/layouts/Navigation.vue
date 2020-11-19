@@ -19,13 +19,6 @@
             <b-nav-item v-if="checkUser == 'admin'|| checkUser == 'user' " href="/logout" v-on:click="userLogout">
               <button type="button" class="logout-button btn btn-danger rounded-pill">Logout</button>
             </b-nav-item>
-            <!--<b-nav-item-dropdown right>
-              <template #button-content>
-               <img class="trash-can" src="../../src/assets/images/user.svg" alt="user">
-              </template>
-              <b-dropdown-item href="/admin">Profile</b-dropdown-item>
-              <b-dropdown-item href="/home">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>-->
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>

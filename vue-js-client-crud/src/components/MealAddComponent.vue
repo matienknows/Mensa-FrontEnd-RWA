@@ -140,17 +140,12 @@ export default {
   color: #DB037B;
 }
 
-.page-title {
-  text-align: center;
-  margin: 30px 0 20px 0;
+.button {
+  margin: 30px 0px 30px 0px;
 }
 
 #type, #price, #name {
   text-align: center;
-}
-
-.button {
-  margin: 30px 0px 30px 0px;
 }
 
 #alert-failed {

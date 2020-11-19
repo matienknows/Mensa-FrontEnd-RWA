@@ -103,7 +103,6 @@
 <script>
 import MealDataService from "@/service/MealDataService";
 import MealTableDataService from "@/service/MealTableDataService";
-import router from '@/router';
 
 export default {
   name: "MealTableWeekAddComponent",
@@ -128,9 +127,6 @@ export default {
           .then(response => {
             this.meals = response.data;
           });
-    },
-    goBack() {
-      router.back()
     },
     checkForm: function () {
       if (!this.selectedCalendarWeek) {

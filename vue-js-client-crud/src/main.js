@@ -5,7 +5,7 @@ import axios from 'axios'
 import store from "./store";
 import {BootstrapVue} from 'bootstrap-vue'
 import http from './http-common'
-//import AuthenticationService from "@/service/AuthenticationService";
+
 
 Vue.prototype.http = axios
 Vue.config.productionTip = false

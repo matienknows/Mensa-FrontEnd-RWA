@@ -16,9 +16,11 @@ class MealTableDataService {
     updateMealTableWeek(data) {
         return http.put('/mealtable', data);
     }
+
     deleteMealTableWeek(id) {
         return http.delete(`/mealtable/${id}`);
     }
+
     deleteMealFromTableWeek(mealTableId, mealId, weekday) {
         return http.delete(`/mealtable/${mealTableId}/delete/${mealId}/${weekday}`);
     }

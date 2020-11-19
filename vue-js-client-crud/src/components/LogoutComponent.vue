@@ -7,7 +7,3 @@ export default {
   name: "LogoutComponent",
 }
 </script>
-
-<style scoped>
-
-</style>
