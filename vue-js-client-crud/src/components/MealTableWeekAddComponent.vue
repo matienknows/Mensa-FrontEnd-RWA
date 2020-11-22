@@ -8,12 +8,15 @@
         <div class="form-row text-center">
           <div class="form-group col-12">
             <label>Calendar Week</label>
-            <fieldset disabled>
-              <div class="form-group col-12">
-                <input class="form-control text-center" type="text" v-model="selectedCalendarWeek">
+            <fieldset>
+              <div>
+                <b-form-spinbutton v-model="selectedCalendarWeek" min="1" max="52"></b-form-spinbutton>
               </div>
+             <!-- <div class="form-group col-12">
+                <input class="form-control text-center" type="text" v-model="selectedCalendarWeek">
+              </div>-->
             </fieldset>
-            <small class="form-text text-muted">The given Information is auto generated and can not be modified.</small>
+            <small class="form-text text-muted">Note: The Calendar Week will be.</small>
             <small id="calendarErrorMsg" class="form-text text-muted">Please choose a week.</small>
           </div>
         </div>
@@ -110,7 +113,7 @@ export default {
     return {
       meals: [],
 
-      selectedCalendarWeek: this.$store.getters.amount,
+      selectedCalendarWeek: 1,
       selectedFoodMonday: '',
       selectedFoodTuesday: '',
       selectedFoodWednesday: '',
@@ -186,7 +189,7 @@ export default {
         return;
       }
       var data = {
-        id: this.selectedCalendarWeek,
+        id: (this.selectedCalendarWeek)*2,
         calendarWeek: this.selectedCalendarWeek,
         mealTableWeek: {
           Monday: {
@@ -223,6 +226,7 @@ export default {
       }
       MealTableDataService.addMealTableWeek(data)
           .then(response => {
+
             console.log(response)
             document.getElementById("alert-failed").style.display = "none"
             document.getElementById("alert-succes").style.display = "block"

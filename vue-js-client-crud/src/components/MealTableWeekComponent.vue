@@ -8,8 +8,8 @@
         <select class="form-control" id="optionMenu" v-model="selectedMealTable"
                 @change="refreshMealTable(selectedMealTable)">
           <option value="" disabled selected>Select Calendar Week</option>
-          <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id">
-            {{ weekMealTable.id }}
+          <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id" v-bind:value="weekMealTable.id">
+            {{ weekMealTable.calendarWeek }}
           </option>
         </select>
       </div>
@@ -116,7 +116,11 @@ export default {
       MealTableDataService.retrieveAllMeatTables()
           .then(response => {
             this.weekMealTables = response.data;
-            this.amountWeekMealTables = (this.weekMealTables.length) + 1;
+
+            this.$store.commit("setAmountWeekMealTables", {
+              newAmount: (this.weekMealTables.length),
+            });
+            this.amountWeekMealTables = this.$store.state.amountWeekMealTables + 1;
             this.$store.commit("setAmountWeekMealTables", {
               newAmount: this.amountWeekMealTables,
             });
@@ -166,10 +170,10 @@ export default {
         return 'admin';
       }
       return false;
-    }
+    },
   },
   created() {
-    this.refreshMealTable(1);
+    //this.refreshMealTable();
     this.retrieveWeekMealTables();
   }
 };

@@ -1,4 +1,5 @@
 import http from '../http-common'
+import router from "@/router";
 
 
 class AuthenticationService {
@@ -7,8 +8,10 @@ class AuthenticationService {
     }
 
     startAuthentication(username, password) {
+        if(this.isUserLoggedIn()) {
+            return router.replace({name: 'meal'})
+        }
         return http.get('/basicauth', {headers: {authorization: this.createBasicAuthToken(username, password)}});
-
     }
 
     createBasicAuthToken(username, password) {

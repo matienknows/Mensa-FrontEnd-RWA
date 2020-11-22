@@ -9,8 +9,8 @@
           <select class="form-control" id="optionMenu" v-model="selectedMealTable"
                   @change="refreshMealTable(selectedMealTable)">
             <option value="" disabled selected>Select Calendar Week</option>
-            <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id">
-              {{ weekMealTable.id }}
+            <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id" v-bind:value="weekMealTable.id">
+              {{ weekMealTable.calendarWeek }}
             </option>
           </select>
         </div>
@@ -104,7 +104,7 @@ export default {
     },
   },
   created() {
-    this.refreshMealTable(1);
+    //this.refreshMealTable();
     this.retrieveWeekMealTables();
   }
 };
@@ -117,6 +117,15 @@ export default {
   margin: 35px 0 35px 0;
   text-align: center;
   color: #DB037B;
+}
+
+thead {
+  background: rgb(219,3,123);
+  background: linear-gradient(16deg, rgba(219,3,123,1) 0%, rgba(219,3,218,1) 81%);
+
+  th {
+    color: white;
+  }
 }
 
 .title {

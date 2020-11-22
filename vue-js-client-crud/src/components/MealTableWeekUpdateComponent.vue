@@ -11,8 +11,8 @@
               <select class="form-control" id="optionMenu" v-model="selectedCalendarWeek"
                       @change="refreshMealTable(selectedCalendarWeek)">
                 <option value="" disabled selected>Select Calendar Week</option>
-                <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id">
-                  {{ weekMealTable.id }}
+                <option v-for="weekMealTable in weekMealTables" v-bind:key="weekMealTable.id" v-bind:value="weekMealTable.id">
+                  {{ weekMealTable.calendarWeek }}
                 </option>
               </select>
             </div>
@@ -259,6 +259,7 @@ export default {
       }
     },
     addMealTableWeek: function () {
+      //this.selectedCalendarWeek = document.getElementById("selectedFoodMonday").value
       this.selectedFoodMonday = document.getElementById("selectedFoodMonday").value
       this.selectedFoodTuesday = document.getElementById("selectedFoodTuesday").value
       this.selectedFoodWednesday = document.getElementById("selectedFoodWednesday").value
@@ -318,7 +319,6 @@ export default {
             console.log(response)
             document.getElementById("alert-failed").style.display = "none"
             document.getElementById("alert-succes").style.display = "block"
-            console.log(this.selectedCalendarWeek)
           })
           .catch(error => {
             console.log(error)

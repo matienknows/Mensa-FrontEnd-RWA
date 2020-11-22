@@ -52,6 +52,7 @@ export default {
           })
           .catch(() => {
             document.getElementById("alert-failed").style.display = "block"
+            localStorage.removeItem('token');
           })
     }
   },
