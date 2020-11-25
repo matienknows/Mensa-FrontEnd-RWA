@@ -11,12 +11,12 @@ import LandingComponent from "@/components/LandingComponent";
 import LoginComponent from "@/components/LoginComponent";
 import LogoutComponent from "@/components/LogoutComponent";
 import AuthenticationService from "@/service/AuthenticationService";
+import PageNotFoundComponent from "@/components/PageNotFoundComponent";
 
 
 Vue.use(VueRouter)
 
 const routes = [
-
     {
         path: '/logout',
         name: 'logout',
@@ -77,6 +77,11 @@ const routes = [
         path: '/mealtable/delete',
         name: 'MealTableWeekDelete',
         component: MealTableWeekDeleteComponent,
+    },
+    {
+        path: '*',
+        name: 'PageNotFound',
+        component: PageNotFoundComponent,
     }
 ]
 
